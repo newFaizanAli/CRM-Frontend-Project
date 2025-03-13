@@ -46,7 +46,9 @@ export function validatePassword(password) {
 
 export const fetchData = async (method, url, body, form) => {
 
-    const fullUrl = `http://localhost:8000${url}`;
+    // const fullUrl = `http://localhost:8000${url}`;
+    const vercelUrl = ` https://crm-backend-project.vercel.app${url}`;
+   
   
     const options = {
       method: method,
@@ -62,7 +64,7 @@ export const fetchData = async (method, url, body, form) => {
    
     try {
       // vercel url 
-      const response = await fetch(fullUrl, options);
+      const response = await fetch(vercelUrl, options);
   
       if (!response.ok) {
         throw new Error('Network response was not ok');
