@@ -40,6 +40,7 @@ export const supplierSchema = Yup.object({
 export const purchaseSchema = Yup.object({
   supplierId: Yup.string().required("Supplier ID is Required"),
   totalAmount: Yup.number().positive().required("Total ammount is Required"),
+  createdAt: Yup.string().required("Date is Required"),
 });
 
 export const customerSchema = Yup.object({
@@ -53,6 +54,7 @@ export const customerSchema = Yup.object({
 export const sellingSchema = Yup.object({
   customerId: Yup.string().required("Customer ID is Required"),
   totalAmount: Yup.number().positive().required("Total ammount is Required"),
+  createdAt: Yup.string().required("Date is Required"),
 });
 
 export const transactionSchema = Yup.object({

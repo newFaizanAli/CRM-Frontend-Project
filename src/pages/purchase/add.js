@@ -30,6 +30,7 @@ const Index = () => {
     totalAmount: 0,
     supplierId: "",
     items: [],
+    createdAt: new Date().toISOString().split("T")[0],
   };
 
   const formik = useFormik({
@@ -52,7 +53,6 @@ const Index = () => {
       await handleFetch("POST", "/purchase/add", data);
       setSelectedProducts([]);
       formik.resetForm();
-      
     },
   });
 
@@ -162,6 +162,22 @@ const Index = () => {
                       className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
                     />
                   </div>
+                </div>
+
+                <div className="mb-5">
+                  <label className="block text-sm font-medium text-black dark:text-white">
+                    Date
+                  </label>
+                  <input
+                    className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                    type="date"
+                    name="createdAt"
+                    id="createdAt"
+                    placeholder="Select Date"
+                    value={formik.values.createdAt}
+                    onChange={formik.handleChange}
+                  />
+                  <FormikError formik={formik} fieldName={"createdAt"} />
                 </div>
 
                 {/* Product Selection */}

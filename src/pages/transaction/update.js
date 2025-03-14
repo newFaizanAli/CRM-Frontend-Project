@@ -15,6 +15,8 @@ const Index = () => {
   const location = useLocation()
   const locData = location.state
   const navigate = useNavigate()
+  const isDisabled = locData?.status === "paid";
+  
 
   const fetchData = async () => {
     try {
@@ -91,6 +93,7 @@ const Index = () => {
         userTypes={userTypes}
         handleUsertypes={handleUsertypes}
         isUpdate={true}
+        isDisabled={isDisabled}
       />
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Index = ({ options = [], isSidebarOpen }) => {
+const Index = ({ options = [], isSidebarOpen, toggleSidebar }) => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [activeSubMenu, setActiveSubMenu] = useState(null);
 
@@ -17,7 +17,7 @@ const Index = ({ options = [], isSidebarOpen }) => {
     <div
       className={`${
         isSidebarOpen ? "block" : "hidden"
-      } sm:block w-64 h-100 bg-gray-800 text-white p-5 fixed top-0 left-0 z-50 sm:relative sm:w-64 transition-all ease-in-out duration-300`}
+      } sm:block w-64 h-[100%] overflow-scroll bg-gray-800 text-white p-5 fixed top-0 left-0 z-50 sm:relative sm:w-64 transition-all ease-in-out duration-300`}
     >
       {/* Sidebar Header */}
       <Link
@@ -27,6 +27,13 @@ const Index = ({ options = [], isSidebarOpen }) => {
         <span className="material-icons text-green-400">admin_panel_settings</span>
         Admin Panel
       </Link>
+
+      <button
+              onClick={toggleSidebar}
+              className="sm:hidden p-2 bg-blue-500 text-white rounded-md mb-4"
+            >
+              {isSidebarOpen ? "Close Menu" : "Open Menu"}
+            </button>
 
       {/* Sidebar Options */}
       {options.map((option) => (

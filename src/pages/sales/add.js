@@ -30,6 +30,7 @@ const Index = () => {
     totalAmount: 0,
     customerId: "",
     items: [],
+    createdAt: new Date().toISOString().split("T")[0],
   };
 
   const formik = useFormik({
@@ -180,6 +181,29 @@ const Index = () => {
                       readOnly
                       className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
                     />
+                  </div>
+                </div>
+
+                <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
+                  <div className="w-full sm:w-1/2">
+                    <label
+                      className="mb-3 block text-sm font-medium text-black dark:text-white"
+                      htmlFor="createdAt"
+                    >
+                      Date
+                    </label>
+                    <div className="relative">
+                      <input
+                        className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                        type="date"
+                        name="createdAt"
+                        id="createdAt"
+                        placeholder="Enter createdAt"
+                        value={formik.values.createdAt}
+                        onChange={formik.handleChange}
+                      />
+                      <FormikError formik={formik} fieldName={"createdAt"} />
+                    </div>
                   </div>
                 </div>
 

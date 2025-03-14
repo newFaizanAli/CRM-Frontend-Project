@@ -15,6 +15,7 @@ const Index = () => {
   const location = useLocation();
   const locData = location.state;
   const navigate = useNavigate()
+  const isDisabled = locData?.status === "Completed";
 
   const fetchData = async () => {
     try {
@@ -52,6 +53,9 @@ const Index = () => {
     _id: locData?._id || "",
     totalAmount: Number(locData?.totalAmount) || 0,
     supplierId: locData?.supplierId?._id || "",
+    createdAt: locData?.createdAt
+        ? new Date(locData?.createdAt).toISOString().split("T")[0]
+        : new Date().toISOString().split("T")[0],
   };
 
   const formik = useFormik({
@@ -147,7 +151,7 @@ const Index = () => {
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
-                Purchase Information
+                {!isDisabled && 'Update'} Purchase Information
               </h3>
             </div>
             <div className="p-7">
@@ -162,6 +166,7 @@ const Index = () => {
                     value={formik.values.supplierId}
                     onChange={formik.handleChange}
                     className="w-full border rounded bg-transparent py-3 px-6 text-black outline-none"
+                    isDisabled={isDisabled}
                   >
                     <option value="">Select Supplier</option>
                     {suppliers.map((e) => (
@@ -185,8 +190,29 @@ const Index = () => {
                     value={totalAmount}
                     readOnly
                     className="w-full border rounded bg-transparent py-3 px-6 text-black outline-none"
+                    isDisabled={isDisabled}
                   />
                 </div>
+
+
+                <div className="mb-5">
+                  <label className="block text-sm font-medium text-black dark:text-white">
+                    Date
+                  </label>
+                  <input
+                    className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                    type="date"
+                    name="createdAt"
+                    id="createdAt"
+                    placeholder="Select Date"
+                    value={formik.values.createdAt}
+                    onChange={formik.handleChange}
+                    isDisabled={isDisabled}
+                  />
+                  <FormikError formik={formik} fieldName={"createdAt"} />
+                </div>
+
+               
 
                 {/* Product Selection */}
                 <div className="mb-5">
@@ -197,6 +223,7 @@ const Index = () => {
                     name="items"
                     onChange={handleAddProduct}
                     className="w-full border rounded bg-transparent py-3 px-6 text-black outline-none"
+                    isDisabled={isDisabled}
                   >
                     <option value="">Select Product</option>
                     {products.map((e) => (
@@ -239,6 +266,7 @@ const Index = () => {
                                   )
                                 }
                                 className="w-16 border p-1 text-center"
+                                isDisabled={isDisabled}
                               />
                             </td>
                             <td className="border p-2">
@@ -252,6 +280,7 @@ const Index = () => {
                                   )
                                 }
                                 className="w-16 border p-1 text-center"
+                                isDisabled={isDisabled}
                               />
                             </td>
                             <td className="border p-2">
@@ -265,6 +294,7 @@ const Index = () => {
                                   handleRemoveProduct(product?.productId?._id)
                                 }
                                 className="text-red-500"
+                                isDisabled={isDisabled}
                               >
                                 Remove
                               </button>
@@ -279,12 +309,12 @@ const Index = () => {
                 
 
 
-                <button
+              {!isDisabled &&  <button
                   type="submit"
                   className="w-full bg-gray-800 text-white py-2 rounded"
                 >
                   Update
-                </button>
+                </button>}
               </form>
             </div>
           </div>

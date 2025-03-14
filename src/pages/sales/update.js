@@ -15,6 +15,7 @@ const Index = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const locData = location.state;
+  const isDisabled = locData?.status === "Completed";
 
   const fetchData = async () => {
     try {
@@ -58,6 +59,9 @@ const Index = () => {
     _id: locData?._id || "",
     totalAmount: Number(locData?.totalAmount) || 0,
     customerId: locData?.customerId?._id || "",
+    createdAt: locData?.createdAt
+        ? new Date(locData?.createdAt).toISOString().split("T")[0]
+        : new Date().toISOString().split("T")[0],
   };
 
   const formik = useFormik({
@@ -167,7 +171,7 @@ const Index = () => {
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
               <h3 className="font-medium text-black dark:text-white">
-                Selling Information
+                {!isDisabled && 'Update'} Selling Information
               </h3>
             </div>
             <div className="p-7">
@@ -184,6 +188,7 @@ const Index = () => {
                         value={formik.values.customerId}
                         onChange={formik.handleChange}
                         className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                        isDisabled={isDisabled}
                       >
                         <option value="">Select Customer</option>
                         {customers.map((e) => (
@@ -208,8 +213,34 @@ const Index = () => {
                       value={totalAmount}
                       readOnly
                       className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                      isDisabled={isDisabled}
                     />
                      <FormikError formik={formik} fieldName="totalAmount" />
+                  </div>
+                </div>
+
+
+                <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
+                  <div className="w-full sm:w-1/2">
+                    <label
+                      className="mb-3 block text-sm font-medium text-black dark:text-white"
+                      htmlFor="createdAt"
+                    >
+                      Date
+                    </label>
+                    <div className="relative">
+                      <input
+                        className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                        type="date"
+                        name="createdAt"
+                        id="createdAt"
+                        placeholder="Enter createdAt"
+                        value={formik.values.createdAt}
+                        onChange={formik.handleChange}
+                        isDisabled={isDisabled}
+                      />
+                      <FormikError formik={formik} fieldName={"createdAt"} />
+                    </div>
                   </div>
                 </div>
 
@@ -222,6 +253,7 @@ const Index = () => {
                     name="items"
                     onChange={handleAddProduct}
                     className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                    isDisabled={isDisabled}
                   >
                     <option value="">Select Product</option>
                     {products.map((e) => (

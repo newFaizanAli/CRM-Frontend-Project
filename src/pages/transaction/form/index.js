@@ -2,9 +2,9 @@ import React from "react";
 import Formhead from "../../../components/formhead";
 import FormikError from "../../../components/text/FormikError";
 
-const Index = ({ formik, userTypes, handleUsertypes, isUpdate }) => {
+const Index = ({ formik, userTypes, handleUsertypes, isUpdate, isDisabled  }) => {
   return (
-    <Formhead title={isUpdate ? "Update Transaction" : "Transaction"}>
+    <Formhead title={(isUpdate && !isDisabled) ? "Update Transaction" : "Transaction"}>
       <div className="p-7">
         <form onSubmit={formik.handleSubmit}>
           <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
@@ -18,6 +18,7 @@ const Index = ({ formik, userTypes, handleUsertypes, isUpdate }) => {
                   value={formik.values.transactionType}
                   onChange={formik.handleChange}
                   className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                  disabled={isDisabled}
                 >
                   <option value="">Select type</option>
 
@@ -39,6 +40,7 @@ const Index = ({ formik, userTypes, handleUsertypes, isUpdate }) => {
                   value={formik.values.paymentType}
                   onChange={formik.handleChange}
                   className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                  disabled={isDisabled}
                 >
                   <option value="">Select payment type</option>
 
@@ -65,6 +67,7 @@ const Index = ({ formik, userTypes, handleUsertypes, isUpdate }) => {
                     formik.handleChange(e);
                   }}
                   className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                  disabled={isDisabled}
                 >
                   <option value="">Select related entity</option>
 
@@ -86,6 +89,7 @@ const Index = ({ formik, userTypes, handleUsertypes, isUpdate }) => {
                   value={formik.values.entityId}
                   onChange={formik.handleChange}
                   className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                  disabled={isDisabled}
                 >
                   <option value="">Select user type</option>
                   {userTypes.map((e) => (
@@ -116,6 +120,7 @@ const Index = ({ formik, userTypes, handleUsertypes, isUpdate }) => {
                   placeholder="Enter amount"
                   value={formik.values.amount}
                   onChange={formik.handleChange}
+                  disabled={isDisabled}
                 />
                 <FormikError formik={formik} fieldName={"amount"} />
               </div>
@@ -131,6 +136,7 @@ const Index = ({ formik, userTypes, handleUsertypes, isUpdate }) => {
                   value={formik.values.status}
                   onChange={formik.handleChange}
                   className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+                  disabled={isDisabled}
                 >
                   <option value="">Select payment status</option>
 
@@ -159,6 +165,7 @@ const Index = ({ formik, userTypes, handleUsertypes, isUpdate }) => {
                   placeholder="Enter createdAt"
                   value={formik.values.createdAt}
                   onChange={formik.handleChange}
+                  disabled={isDisabled}
                 />
                 <FormikError formik={formik} fieldName={"createdAt"} />
               </div>
@@ -166,12 +173,12 @@ const Index = ({ formik, userTypes, handleUsertypes, isUpdate }) => {
           </div>
 
           {/* Submit Button */}
-          <button
+         {!isDisabled && <button
             type="submit"
             className="w-full bg-gray-800 text-white py-2 rounded"
           >
             {isUpdate ? "Update" : "Save"}
-          </button>
+          </button>}
         </form>
       </div>
     </Formhead>
