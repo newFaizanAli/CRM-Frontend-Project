@@ -17,7 +17,7 @@ const Index = ({ options = [], isSidebarOpen, toggleSidebar }) => {
     <div
       className={`${
         isSidebarOpen ? "block" : "hidden"
-      } sm:block w-64 h-[100%] overflow-scroll bg-gray-800 text-white p-5 fixed top-0 left-0 z-50 sm:relative sm:w-64 transition-all ease-in-out duration-300`}
+      } sm:block w-64 h-[100%]  bg-gray-800 text-white p-5 fixed top-0 left-0 z-50 sm:relative sm:w-64 transition-all ease-in-out duration-300`}
     >
       {/* Sidebar Header */}
       <Link

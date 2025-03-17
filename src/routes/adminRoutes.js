@@ -15,29 +15,29 @@ import TransactionLayout from "../layouts/admin/transaction";
 // pages
 import AdminDashboard from "../pages/dashboard/admin";
 import WarehouseLayout from "../layouts/admin/stock";
-import AddWarehouse from "../pages/warehouse/add";
-import WarehouseList from "../pages/warehouse/list";
-import UpdateWarehouse from "../pages/warehouse/update";
-import CategoryPage from "../pages/category";
-import ProductList from "../pages/product/list";
-import AddProduct from "../pages/product/add";
-import UpdateProduct from "../pages/product/update";
-import PurchaseList from "../pages/purchase/list";
-import AddPurchase from "../pages/purchase/add";
-import UpdatePurchase from "../pages/purchase/update";
-import ConfirmPurchase from "../pages/purchase/confirm";
-import SupplierList from "../pages/supplier/list";
-import AddSupplier from "../pages/supplier/add";
-import UpdateSupplier from "../pages/supplier/update";
-import CustomerList from "../pages/customer/list";
-import AddCustomer from "../pages/customer/add";
-import UpdateCustomer from "../pages/customer/update";
-import SaleList from "../pages/sales/list";
-import AddSale from "../pages/sales/add";
-import UpdateSale from "../pages/sales/update";
-import TransactionList from "../pages/transaction/list"
-import AddTransaction from "../pages/transaction/add"
-import UpdateTransaction from "../pages/transaction/update"
+// import AddWarehouse from "../pages/erp/stock/warehouse/add";
+import WarehouseList from "../pages/erp/stock/warehouse/list";
+import UpdateWarehouse from "../pages/erp/stock/warehouse/update";
+import CategoryPage from "../pages/erp/stock/category";
+import ProductList from "../pages/erp/stock/product/list";
+// import AddProduct from "../pages/erp/stock/product/add";
+import UpdateProduct from "../pages/erp/stock/product/update";
+import PurchaseList from "../pages/erp/buying/purchase/list";
+import AddPurchase from "../pages/erp/buying/purchase/add";
+import UpdatePurchase from "../pages/erp/buying/purchase/update";
+import ConfirmPurchase from "../pages/erp/buying/purchase/confirm";
+import SupplierList from "../pages/erp/buying/supplier/list";
+// import AddSupplier from "../pages/erp/buying/supplier/add";
+import UpdateSupplier from "../pages/erp/buying/supplier/update";
+import CustomerList from "../pages/erp/selling/customer/list";
+// import AddCustomer from "../pages/erp/selling/customer/add";
+import UpdateCustomer from "../pages/erp/selling/customer/update";
+import SaleList from "../pages/erp/selling/sales/list";
+import AddSale from "../pages/erp/selling/sales/add";
+import UpdateSale from "../pages/erp/selling/sales/update";
+import TransactionList from "../pages/erp/accounts/transaction/list"
+import AddTransaction from "../pages/erp/accounts/transaction/add"
+import UpdateTransaction from "../pages/erp/accounts/transaction/update"
 
 const adminRoutes = (
   <>
@@ -46,13 +46,13 @@ const adminRoutes = (
       <Route path="stock" element={<StockLayout />}>
         <Route path="warehouse" element={<WarehouseLayout />}>
           <Route index element={<WarehouseList />} />
-          <Route path="add" element={<AddWarehouse />} />
+          {/* <Route path="add" element={<AddWarehouse />} /> */}
           <Route path="update" element={<UpdateWarehouse />} />
         </Route>
         <Route path="category" element={<CategoryPage />} />
         <Route path="product" element={<ProductLayout />}>
           <Route index element={<ProductList />} />
-          <Route path="add" element={<AddProduct />} />
+          {/* <Route path="add" element={<AddProduct />} /> */}
           <Route path="update" element={<UpdateProduct />} />
         </Route>
       </Route>
@@ -66,7 +66,7 @@ const adminRoutes = (
         </Route>
         <Route path="supplier" element={<SupplierLayout />}>
           <Route index element={<SupplierList />} />
-          <Route path="add" element={<AddSupplier />} />
+          {/* <Route path="add" element={<AddSupplier />} /> */}
           <Route path="update" element={<UpdateSupplier />} />
         </Route>
       </Route>
@@ -79,7 +79,7 @@ const adminRoutes = (
         </Route>
         <Route path="customer" element={<CustomerLayout />}>
           <Route index element={<CustomerList />} />
-          <Route path="add" element={<AddCustomer />} />
+          {/* <Route path="add" element={<AddCustomer />} /> */}
           <Route path="update" element={<UpdateCustomer />} />
         </Route>
       </Route>

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from '../../components/sidebar'
+import Sidebar from "../../components/sidebar";
 import Navbar from "../../components/navbar";
 import { UserRoleContext } from "../../context";
-import {adminOptions} from '../../utilities/menus'
+import { adminOptions } from "../../utilities/menus";
 
 const Index = () => {
   const { isLogin } = useContext(UserRoleContext);
@@ -18,11 +18,10 @@ const Index = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-
   return (
     <>
       <Navbar />
-  
+
       <div className="flex bg-gradient-to-b from-indigo-50 to-orange-50 h-screen">
         {/* Sidebar */}
         {isLogin && (
@@ -33,7 +32,7 @@ const Index = () => {
             toggleSubItems={toggleSubItems}
           />
         )}
-  
+
         {/* Main Content with Scrolling */}
         <div className="flex-1 h-screen p-6 bg-gray-100 overflow-auto">
           {isLogin && (
@@ -44,13 +43,12 @@ const Index = () => {
               {isSidebarOpen ? "Close Menu" : "Open Menu"}
             </button>
           )}
-  
+
           <Outlet />
         </div>
       </div>
     </>
   );
-  
 };
 
 export default Index;

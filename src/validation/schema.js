@@ -12,7 +12,7 @@ export const signInSchema = Yup.object({
   password: Yup.string().required("Password is Required"),
 });
 
-export const wareschemaSchema = Yup.object({
+export const warehouseSchema = Yup.object({
   area: Yup.string().required("Area is Required"),
   city: Yup.string().required("City is Required"),
 });

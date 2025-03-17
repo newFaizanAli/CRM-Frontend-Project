@@ -9,12 +9,12 @@ export const adminOptions = [
           title: "Warehouse",
           icon: "local_shipping",
           option: [
-            {
-              id: "warehouse-add",
-              title: "Add Warehouse",
-              link: "/stock/warehouse/add",
-              icon: "add",
-            },
+            // {
+            //   id: "warehouse-add",
+            //   title: "Add Warehouse",
+            //   link: "/stock/warehouse/add",
+            //   icon: "add",
+            // },
             {
               id: "warehouse-list",
               title: "List Warehouse",
@@ -37,12 +37,12 @@ export const adminOptions = [
           title: "Product",
           icon: "store",
           option: [
-            {
-              id: "product-add",
-              title: "Add Product",
-              link: "/stock/product/add",
-              icon: "add",
-            },
+            // {
+            //   id: "product-add",
+            //   title: "Add Product",
+            //   link: "/stock/product/add",
+            //   icon: "add",
+            // },
             {
               id: "product-list",
               title: "Products",
@@ -64,12 +64,12 @@ export const adminOptions = [
           title: "Suppliers",
           icon: "business", 
           option: [
-            {
-              id: "supplier-add",
-              title: "Add Supplier",
-              link: "/buying/supplier/add",
-              icon: "add", 
-            },
+            // {
+            //   id: "supplier-add",
+            //   title: "Add Supplier",
+            //   link: "/buying/supplier/add",
+            //   icon: "add", 
+            // },
             {
               id: "supplier-list",
               title: "List Suppliers",
@@ -128,12 +128,12 @@ export const adminOptions = [
           title: "Customers",
           icon: "groups", 
           option: [
-            {
-              id: "cutomer-add",
-              title: "Add Customer",
-              link: "/selling/customer/add",
-              icon: "add", 
-            },
+            // {
+            //   id: "cutomer-add",
+            //   title: "Add Customer",
+            //   link: "/selling/customer/add",
+            //   icon: "add", 
+            // },
             {
               id: "customer-list",
               title: "List Customer",
