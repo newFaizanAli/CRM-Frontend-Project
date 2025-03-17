@@ -77,9 +77,10 @@ const Index = () => {
     validationSchema: transactionSchema,
     enableReinitialize: true,
     onSubmit: async (values) => {
-      const result = await handleFetch("POST", "/transaction/add", values);
+      const result = await handleFetch("PUT", "/transaction", values);
       if(result.success){
         formik.resetForm();
+        navigate('/transaction')
       }
     },
   });
