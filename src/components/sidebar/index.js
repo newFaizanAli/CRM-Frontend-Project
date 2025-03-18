@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const Index = ({ options = [], isSidebarOpen, toggleSidebar }) => {
+const Index = ({ options = [], isSidebarOpen }) => {
   const [activeMenu, setActiveMenu] = useState(null);
   const [activeSubMenu, setActiveSubMenu] = useState(null);
 
@@ -15,25 +15,26 @@ const Index = ({ options = [], isSidebarOpen, toggleSidebar }) => {
 
   return (
     <div
-      className={`${
-        isSidebarOpen ? "block" : "hidden"
-      } sm:block w-64 h-[100%]  bg-gray-800 text-white p-5 fixed top-0 left-0 z-50 sm:relative sm:w-64 transition-all ease-in-out duration-300`}
+      className={`
+        fixed top-0 left-0 h-full bg-gray-800 text-white p-5 w-64 z-50 
+        transition-transform duration-300 ease-in-out
+        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"} 
+        sm:relative sm:translate-x-0
+      `}
     >
       {/* Sidebar Header */}
-      <Link
-        className="text-2xl font-bold mb-6 flex items-center gap-2"
-        to={"/"}
-      >
+      <Link className="text-2xl font-bold mb-6 flex items-center gap-2" to={"/"}>
         <span className="material-icons text-green-400">admin_panel_settings</span>
         Admin Panel
       </Link>
 
+      {/* Close Sidebar Button */}
       <button
-              onClick={toggleSidebar}
-              className="sm:hidden p-2 bg-blue-500 text-white rounded-md mb-4"
-            >
-              {isSidebarOpen ? "Close Menu" : "Open Menu"}
-            </button>
+        // onClick={toggleSidebar}
+        className="sm:hidden p-2 bg-blue-500 text-white rounded-md mb-4"
+      >
+        {isSidebarOpen ? "Close Menu" : "Open Menu"}
+      </button>
 
       {/* Sidebar Options */}
       {options.map((option) => (
@@ -51,11 +52,7 @@ const Index = ({ options = [], isSidebarOpen, toggleSidebar }) => {
           </div>
 
           {/* Sub Menu Level 1 */}
-          <ul
-            className={`${
-              activeMenu === option.id ? "block" : "hidden"
-            } pl-6 space-y-2`}
-          >
+          <ul className={`${activeMenu === option.id ? "block" : "hidden"} pl-6 space-y-2`}>
             {Array.isArray(option.option) && option.option.length > 0 ? (
               option.option.map((subOption) => (
                 <li key={subOption.id}>
@@ -75,11 +72,7 @@ const Index = ({ options = [], isSidebarOpen, toggleSidebar }) => {
                     </div>
 
                     {/* Sub Menu Level 2 */}
-                    <ul
-                      className={`${
-                        activeSubMenu === subOption.id ? "block" : "hidden"
-                      } pl-6 space-y-1`}
-                    >
+                    <ul className={`${activeSubMenu === subOption.id ? "block" : "hidden"} pl-6 space-y-1`}>
                       {Array.isArray(subOption.option) &&
                         subOption.option.map((nestedOption) => (
                           <li key={nestedOption.id}>

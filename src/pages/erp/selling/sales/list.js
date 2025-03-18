@@ -81,6 +81,14 @@ const Index = () => {
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-4 pt-4 pb-2 shadow-md sm:px-6 xl:pb-1">
+     <div className="flex justify-end">
+        <button
+          className="bg-gray-800 text-white py-2 px-4 rounded hover:bg-primary-dark transition"
+          onClick={() => navigate("/selling/sale/add")}
+        >
+          + Add Sale
+        </button>
+      </div>
       <CustomTable setSearchQuery={setSearchQuery} searchQuery={searchQuery}>
         <thead>
           <tr className="bg-gray-200 dark:bg-meta-4">

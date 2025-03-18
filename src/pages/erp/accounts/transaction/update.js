@@ -8,6 +8,7 @@ import { fireToast } from "../../../../utilities/functions";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Index = () => {
+  
   const { handleFetch } = useFetch();
   const [suppliers, setSuppliers] = useState([]);
   const [customers, setCustomers] = useState([]);
@@ -16,7 +17,7 @@ const Index = () => {
   const locData = location.state
   const navigate = useNavigate()
   const isDisabled = locData?.status === "paid";
-  const isUpdate = true
+  
   
 
   const fetchData = async () => {

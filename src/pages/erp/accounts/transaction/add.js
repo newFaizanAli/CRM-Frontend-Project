@@ -39,7 +39,6 @@ const Index = () => {
 
   const handleUsertypes = (type) => {
     formik.values.entityId = "";
-
     if (type === "supplier") {
       setUserTypes(suppliers);
     } else {
@@ -61,7 +60,6 @@ const Index = () => {
   return (
     <div className="mx-auto max-w-270">
       <Toaster />
-
       <Form
         formik={formik}
         userTypes={userTypes}

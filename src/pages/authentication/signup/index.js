@@ -21,6 +21,7 @@ const Index = () => {
     email: "",
     password: "",
     usertype: "admin",
+    status: true
   };
 
   const formik = useFormik({

@@ -9,6 +9,7 @@ const Index = () => {
   const { isLogin } = useContext(UserRoleContext);
   const [activeMenu, setActiveMenu] = useState(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); 
 
   const toggleSubItems = (id) => {
     setActiveMenu(activeMenu === id ? null : id);
@@ -23,18 +24,22 @@ const Index = () => {
       <Navbar />
 
       <div className="flex bg-gradient-to-b from-indigo-50 to-orange-50 h-screen">
-        {/* Sidebar */}
         {isLogin && (
           <Sidebar
             options={adminOptions}
             isSidebarOpen={isSidebarOpen}
             activeMenu={activeMenu}
             toggleSubItems={toggleSubItems}
+            isModalOpen={isModalOpen} 
+            toggleSidebar={toggleSidebar}
           />
         )}
 
-        {/* Main Content with Scrolling */}
-        <div className="flex-1 h-screen p-6 bg-gray-100 overflow-auto">
+        <div
+          className={`flex-1 h-screen p-6 bg-gray-100 overflow-auto ${
+            isModalOpen ? "opacity-50 pointer-events-none" : ""
+          }`} 
+        >
           {isLogin && (
             <button
               onClick={toggleSidebar}
@@ -44,7 +49,8 @@ const Index = () => {
             </button>
           )}
 
-          <Outlet />
+      
+          <Outlet context={{ setIsModalOpen }} />
         </div>
       </div>
     </>

@@ -4,7 +4,8 @@ export const signUpSchema = Yup.object({
   name: Yup.string().required("Name is Required"),
   usertype: Yup.string().required("Usertype is Required"),
   email: Yup.string().email().required("Email is Required"),
-  password: Yup.string().required("Password is Required"),
+  // password: Yup.string().required("Password is Required"),
+  status: Yup.string().required("Status is Required"),
 });
 
 export const signInSchema = Yup.object({
@@ -66,3 +67,17 @@ export const transactionSchema = Yup.object({
   status: Yup.string().required("Status is Required"), //Pending, Paid
   createdAt: Yup.string().required("Date is Required"),
 });
+
+
+export const leadSchema = Yup.object({
+  name:  Yup.string().required("Name is Required"), 
+  email:  Yup.string().email().required("Email is Required"), 
+  phone: Yup.number().positive().min(11).required("Phone number is required"),
+  company: Yup.string(),
+  source: Yup.string(),
+  assignedTo: Yup.string().required("Assigneded person is Required"),
+  status: Yup.string().required("Status is Required"), // "new", "contacted", "qualified", "converted
+  createdAt: Yup.string().required("Date is Required"),
+  notes: Yup.string(), 
+});
+

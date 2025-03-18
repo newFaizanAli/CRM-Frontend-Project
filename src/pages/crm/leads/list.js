@@ -1,18 +1,20 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useFetch } from "../../../../hooks/useFetch";
+import { useFetch } from "../../../hooks/useFetch";
 import {
   fireToast,
   handleQuerySearch,
   pageData,
   handleDelete,
-} from "../../../../utilities/functions";
+} from "../../../utilities/functions";
 import {
   MdOutlineDeleteOutline,
   MdOutlineEditNote,
-} from "../../../../components/icons";
-import Pagenator from "../../../../components/paginator";
-import CustomTable from "../../../../components/table";
+} from "../../../components/icons";
+import Pagenator from "../../../components/paginator";
+import CustomTable from "../../../components/table";
 import { useNavigate } from "react-router-dom";
+import { useModal } from "../../../hooks/useModal";
+import LeadBox from "../../../components/modelbox/crm/leads";
 
 const Index = () => {
   const { handleFetch } = useFetch();
@@ -22,12 +24,14 @@ const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const fetchTransactions = async () => {
+  const { isModalOpen, openModal, closeModal } = useModal();
+
+  const fetchLeads = async () => {
     try {
-      const result = await handleFetch("GET", "/transactions");
-      if (result.transactions) {
-        setData(result.transactions);
-        setFilteredData(result.transactions);
+      const result = await handleFetch("GET", "/leads");
+      if (result.leads) {
+        setData(result.leads);
+        setFilteredData(result.leads);
       }
     } catch (error) {
       fireToast(error.message, false);
@@ -35,17 +39,17 @@ const Index = () => {
   };
 
   useEffect(() => {
-    fetchTransactions();
+    fetchLeads();
   }, []);
 
-  const deleteTransaction = useCallback(async (transaction) => {
+  const deleteLead = useCallback(async (lead) => {
     await handleDelete(
-      `Are you sure you want to delete this transaction ${transaction?.code}?`,
+      `Are you sure you want to delete this lead ${lead.code}?`,
       "DELETE",
-      `/transaction/${transaction._id}`,
+      `/lead/${lead._id}`,
       handleFetch,
-      { _id: transaction._id },
-      fetchTransactions
+      { _id: lead._id },
+      fetchLeads
     );
   }, []);
 
@@ -58,47 +62,36 @@ const Index = () => {
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-4 pt-4 pb-2 shadow-md sm:px-6 xl:pb-1">
-      
-      <h3>Items</h3>
+      <div className="flex justify-end">
+        <button
+          className="bg-gray-800 text-white py-2 px-4 rounded hover:bg-primary-dark transition"
+          onClick={() => openModal()}
+        >
+          + Add Lead
+        </button>
+      </div>
+      <LeadBox
+        title={"User"}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        handleFetch={handleFetch}
+        getList={fetchLeads}
+      />
       <CustomTable setSearchQuery={setSearchQuery} searchQuery={searchQuery}>
         <thead>
           <tr className="bg-gray-200 dark:bg-meta-4">
             <th className="p-3 text-left">Code</th>
-            <th className="p-3 text-left">Transaction</th>
-            <th className="p-3 text-left">Entity</th>
-            <th className="p-3 text-left">Payment</th>
-            <th className="p-3 text-left">Amount</th>
-            <th className="p-3 text-left">Status</th>
-            <th className="p-3 text-left">Date</th>
+            <th className="p-3 text-left">Name</th>
+            <th className="p-3 text-left">Email</th>
             <th className="p-3 text-left">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {currentData.map((transaction, index) => (
+          {currentData.map((lead, index) => (
             <tr key={index} className=" dark:bg-meta-4">
-              <td className="p-3">{transaction?.code}</td>
-              <td className="p-3">{transaction?.transactionType}</td>
-              <td className="p-3">{transaction?.relatedEntity}</td>
-
-              <td className="p-3">
-                {transaction?.paymentType || "Not Provided"}
-              </td>
-              <td className="p-3">{transaction?.amount}</td>
-
-              <td
-                className={`
-                          inline-flex rounded-full bg-opacity-20 mt-4 py-1 px-3 text-sm font-medium
-                           ${
-                             transaction.status === "paid"
-                               ? "bg-green-500 text-green-700"
-                               : "bg-blue-800 text-blue-700"
-                           }`}
-              >
-                {transaction.status === "paid" ? "Paid" : "Pending"}
-              </td>
-              <td className="p-3">
-                {new Date(transaction?.createdAt).toISOString().split("T")[0]}
-              </td>
+              <td className="p-3">{lead?.code}</td>
+              <td className="p-3">{lead?.name}</td>
+              <td className="p-3">{lead?.email}</td>
 
               <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                 <div className="flex items-center space-x-3.5">
@@ -106,8 +99,8 @@ const Index = () => {
                     type="button"
                     className="hover:text-primary"
                     onClick={() =>
-                      navigate("/transaction/update", {
-                        state: transaction,
+                      navigate("/crm/lead/update", {
+                        state: lead,
                       })
                     }
                   >
@@ -116,7 +109,7 @@ const Index = () => {
                   <button
                     type="button"
                     className="hover:text-danger"
-                    onClick={() => deleteTransaction(transaction)}
+                    onClick={() => deleteLead(lead)}
                   >
                     <MdOutlineDeleteOutline size={25} />
                   </button>

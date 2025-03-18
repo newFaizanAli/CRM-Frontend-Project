@@ -25,7 +25,7 @@ const Index = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedPurchase, setExpandedPurchase] = useState(null);
 
-  const fetchPurchases = useCallback( async () => {
+  const fetchPurchases = useCallback(async () => {
     try {
       const result = await handleFetch("GET", "/purchases");
       if (result.purchases) {
@@ -81,6 +81,14 @@ const Index = () => {
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-4 pt-4 pb-2 shadow-md sm:px-6 xl:pb-1">
+      <div className="flex justify-end">
+        <button
+          className="bg-gray-800 text-white py-2 px-4 rounded hover:bg-primary-dark transition"
+          onClick={() => navigate("/buying/purchase/add")}
+        >
+          + Add Purchase
+        </button>
+      </div>
       <CustomTable setSearchQuery={setSearchQuery} searchQuery={searchQuery}>
         <thead>
           <tr className="bg-gray-200">
@@ -110,9 +118,10 @@ const Index = () => {
                 >
                   {purchase.status === "Completed" ? "Completed" : "Pending"}
                 </td>
-                <td className="p-3">{new Date(purchase.createdAt).toLocaleDateString()}</td>
+                <td className="p-3">
+                  {new Date(purchase.createdAt).toLocaleDateString()}
+                </td>
 
-               
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <div className="flex items-center space-x-3.5">
                     <button
