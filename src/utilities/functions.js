@@ -64,7 +64,7 @@ export const fetchData = async (method, url, body, form) => {
     }
    
     try {
-      // vercel url 
+      
       const response = await fetch(vercelUrl, options);
   
       if (!response.ok) {

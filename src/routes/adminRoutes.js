@@ -15,6 +15,8 @@ import TransactionLayout from "../layouts/admin/transaction";
 import CRMLayout from "../layouts/admin/crm";
 import UserLayout from "../layouts/admin/crm/user";
 import LeadLayout from "../layouts/admin/crm/lead";
+import DealLayout from "../layouts/admin/crm/deal";
+import ProjectLayout from "../layouts/admin/crm/project";
 
 // pages
 import AdminDashboard from "../pages/dashboard/admin";
@@ -47,6 +49,11 @@ import UpdateUser from "../pages/crm/user/update";
 import UsersList from "../pages/crm/user/list";
 import UpdateLead from "../pages/crm/leads/update";
 import LeadsList from "../pages/crm/leads/list";
+import UpdateDeal from "../pages/crm/deals/update";
+import DealList from "../pages/crm/deals/list";
+
+import UpdateProject from "../pages/crm/projects/update";
+import ProjectList from "../pages/crm/projects/list";
 
 const adminRoutes = (
   <>
@@ -105,7 +112,17 @@ const adminRoutes = (
           <Route index element={<LeadsList />} />
           <Route path="update" element={<UpdateLead />} />
         </Route>
+        <Route path="deal" element={<DealLayout />}>
+          <Route index element={<DealList />} />
+          <Route path="update" element={<UpdateDeal />} />
+        </Route>
+        <Route path="project" element={<ProjectLayout />}>
+          <Route index element={<ProjectList />} />
+          <Route path="update" element={<UpdateProject />} />
+        </Route>
       </Route>
+
+      
     </Route>
   </>
 );

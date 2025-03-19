@@ -49,6 +49,8 @@ export const customerSchema = Yup.object({
   email: Yup.string().email().required("Email is Required"),
   phone: Yup.number().positive().min(11).required("Phone number is required"),
   address: Yup.string().required("Address is Required"),
+  status: Yup.string(),
+  comapny: Yup.string(),
 });
 
 
@@ -79,5 +81,18 @@ export const leadSchema = Yup.object({
   status: Yup.string().required("Status is Required"), // "new", "contacted", "qualified", "converted
   createdAt: Yup.string().required("Date is Required"),
   notes: Yup.string(), 
+  adress:  Yup.string(), 
 });
+
+export const dealSchema = Yup.object({
+  customer:  Yup.string().required("Customer is Required"), 
+  stage:  Yup.string().required("Stage is Required"), 
+  value: Yup.number().positive().required("Value is Required"),
+  assignedTo: Yup.string().required("Assigneded person is Required"), 
+  createdAt: Yup.string().required("Date is Required"), 
+  expectedCloseDate: Yup.string(), 
+});
+
+
+
 

@@ -74,6 +74,53 @@ const Index = ({ formik, isUpdate }) => {
         <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black dark:text-white"
+            htmlFor="status"
+          >
+            Status
+          </label>
+          <div className="relative">
+            <select
+              name="status"
+              id="status"
+              value={formik.values.status}
+              onChange={formik.handleChange}
+              className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+            >
+              <option value="">select status</option>
+
+              <option value={"active"}>Active</option>
+              <option value={"inactive"}>In Active</option>
+            </select>
+            <FormikError formik={formik} fieldName={"status"} />
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
+      <div className="w-full sm:w-1/2">
+          <label
+            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            htmlFor="company"
+          >
+            Company
+          </label>
+          <div className="relative">
+            <input
+              className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+              type="text"
+              name="company"
+              id="company"
+              placeholder="Enter company"
+              value={formik.values.company}
+              onChange={formik.handleChange}
+            />
+            <FormikError formik={formik} fieldName={"company"} />
+          </div>
+        </div>
+
+        <div className="w-full sm:w-1/2">
+          <label
+            className="mb-3 block text-sm font-medium text-black dark:text-white"
             htmlFor="address"
           >
             Address

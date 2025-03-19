@@ -25,6 +25,8 @@ const Index = () => {
     email: locData.email || "",
     phone: locData.phone || "",
     address: locData.address || "",
+    status: locData.status || "",
+    company: locData.company || "",
   };
 
   const formik = useFormik({

@@ -76,7 +76,6 @@ export const adminOptions = [
       },
     ],
   },
-  
 
   {
     id: "crm",
@@ -117,9 +116,9 @@ export const adminOptions = [
         icon: "trending_up",
         option: [
           {
-            id: "opportunities",
-            title: "Opportunities",
-            link: "/crm/opportunities",
+            id: "deals",
+            title: "Deals",
+            link: "/crm/deal",
             icon: "playlist_add_check",
           },
         ],
@@ -131,10 +130,16 @@ export const adminOptions = [
         icon: "task_alt",
         option: [
           {
+            id: "projects",
+            title: "Projects",
+            link: "/crm/project",
+            icon: "list",
+          },
+          {
             id: "tasks",
             title: "Tasks",
             link: "/crm/tasks",
-            icon: "checklist",
+            icon: "list",
           },
         ],
       },

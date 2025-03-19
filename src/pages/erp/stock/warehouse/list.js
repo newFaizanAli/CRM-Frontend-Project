@@ -13,8 +13,9 @@ import {
 import Pagenator from "../../../../components/paginator";
 import CustomTable from "../../../../components/table";
 import { useNavigate } from "react-router-dom";
-import { useModal } from "../../../../hooks/useModal";
 import WarehouseBox from "../../../../components/modelbox/warehouse";
+import ModalWrapper from "../../../../components/modalwrapper";
+
 
 const Index = () => {
   const { handleFetch } = useFetch();
@@ -24,7 +25,7 @@ const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  const { isModalOpen, openModal, closeModal } = useModal();
+ 
 
   const fetchWarehouses = async () => {
     try {
@@ -60,22 +61,14 @@ const Index = () => {
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-4 pt-4 pb-2 shadow-md sm:px-6 xl:pb-1">
-      <WarehouseBox
-        title={'Warehouse'}
-        isOpen={isModalOpen}
-        onClose={closeModal}
+      
+
+      <ModalWrapper
+        Comp={WarehouseBox}
+        title={"Warehouse"}
         handleFetch={handleFetch}
         getList={fetchWarehouses}
       />
-
-      <div className="flex justify-end">
-        <button
-          className="bg-gray-800 text-white py-2 px-4 rounded hover:bg-primary-dark transition"
-          onClick={() => openModal()}
-        >
-          + Add Warehouse
-        </button>
-      </div>
 
       <CustomTable setSearchQuery={setSearchQuery} searchQuery={searchQuery}>
         <thead>

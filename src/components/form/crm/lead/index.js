@@ -205,6 +205,27 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
       </div>
 
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
+      <div className="w-full sm:w-1/2">
+          <label
+            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            htmlFor="address,"
+          >
+            Adress
+          </label>
+          <div className="relative">
+            <textarea
+              rows={4}
+              className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+              type="text"
+              name="address"
+              id="address"
+              placeholder="Enter address"
+              value={formik.values.address}
+              onChange={formik.handleChange}
+            />
+            <FormikError formik={formik} fieldName={"address"} />
+          </div>
+        </div>
         <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black dark:text-white"

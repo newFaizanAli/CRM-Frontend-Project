@@ -1,9 +1,9 @@
 import React from "react";
-import Form from "../../../components/form/crm/lead";
+import Form from "../../../components/form/crm/deal";
 import { Toaster } from "react-hot-toast";
 import { useFetch } from "../../../hooks/useFetch";
 import { useFormik } from "formik";
-import { leadSchema } from "../../../validation/schema";
+import { dealSchema } from "../../../validation/schema";
 import { useLocation, useNavigate } from "react-router-dom";
 import Formhead from "../../../components/formhead";
 
@@ -13,30 +13,29 @@ const Index = () => {
   const locData = location?.state;
   const navigate = useNavigate();
 
+ 
   const initialValues = {
     _id: locData?._id,
-
-    name: locData?.name || "",
-    email: locData?.email || "",
-    phone: locData?.phone || "",
-    company: locData?.company || "",
-    source: locData?.source || "",
-    assignedTo: locData?.assignedTo?._id || "",
-    status: locData?.status || "",
+    assignedTo: locData?.assignedTo?._id,
+    stage: locData?.stage,
     createdAt: locData?.createdAt
-      ? new Date(locData?.createdAt).toISOString().split("T")[0]
-      : new Date().toISOString().split("T")[0],
-    notes: locData?.notes || "",
+    ? new Date(locData?.createdAt).toISOString().split("T")[0]
+    : new Date().toISOString().split("T")[0],
+    expectedCloseDate: locData?.expectedCloseDate
+    ? new Date(locData?.expectedCloseDate).toISOString().split("T")[0]
+    : new Date().toISOString().split("T")[0],
+    customer: locData?.customer?._id,
+    value: locData?.value,
   };
 
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: leadSchema,
+    validationSchema: dealSchema,
     enableReinitialize: true,
     onSubmit: async (values) => {
-      const res = await handleFetch("PUT", "/lead", { ...values });
+      const res = await handleFetch("PUT", "/deal", { ...values });
       if (res.success) {
-        navigate("/crm/lead");
+        navigate("/crm/deal");
       }
     },
   });

@@ -37,10 +37,35 @@ const LEADSTYPES = [
     id: "qualified",
     type: "Qualified",
   },
+  // {
+  //   id: "converted",
+  //   type: "Converted",
+  // },
+];
+
+
+const DEALSTAGES = [ 
   {
-    id: "converted",
-    type: "Converted",
+    id: "new",
+    type: "New",
+  },
+  {
+    id: "qualified",
+    type: "Qualified",
+  },
+  {
+    id: "proposal-sent",
+    type: "Proposal Sent",
+  },
+  {
+    id: "closed-won",
+    type: "Closed Won",
+  },
+  {
+    id: "closed-lost",
+    type: "Closed Lost",
   },
 ];
 
-export { MINPASSLENGTH, MAXPASSLENGTH, DATAPERPAGE, USERSTYPES, RANDOMPASS, LEADSTYPES };
+
+export { MINPASSLENGTH, MAXPASSLENGTH, DATAPERPAGE, USERSTYPES, RANDOMPASS, LEADSTYPES, DEALSTAGES };
