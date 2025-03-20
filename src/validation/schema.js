@@ -53,7 +53,6 @@ export const customerSchema = Yup.object({
   comapny: Yup.string(),
 });
 
-
 export const sellingSchema = Yup.object({
   customerId: Yup.string().required("Customer ID is Required"),
   totalAmount: Yup.number().positive().required("Total ammount is Required"),
@@ -69,7 +68,6 @@ export const transactionSchema = Yup.object({
   status: Yup.string().required("Status is Required"), //Pending, Paid
   createdAt: Yup.string().required("Date is Required"),
 });
-
 
 export const leadSchema = Yup.object({
   name:  Yup.string().required("Name is Required"), 
@@ -94,5 +92,26 @@ export const dealSchema = Yup.object({
 });
 
 
+export const projectSchema = Yup.object({
+  customer:  Yup.string().required("Customer is Required"), 
+  name:  Yup.string().required("Name is Required"), 
+  description: Yup.string(),
+  assignedTo: Yup.string().required("Assigneded person is Required"), 
+  startDate: Yup.string(), 
+  endDate: Yup.string(), 
+  deal: Yup.string(), 
+  status: Yup.string(), 
+});
+
+export const taskSchema = Yup.object({
+  title:  Yup.string().required("Title is Required"), 
+  description:  Yup.string(),
+  project: Yup.string().required("project is Required"),
+  assignedTo: Yup.string().required("Assigneded person is Required"), 
+  dueDate: Yup.string(),
+  status: Yup.string(), 
+  priority: Yup.string(), 
+  taskType: Yup.string(), 
+});
 
 

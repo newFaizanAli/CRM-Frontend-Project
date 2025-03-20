@@ -138,7 +138,7 @@ export const adminOptions = [
           {
             id: "tasks",
             title: "Tasks",
-            link: "/crm/tasks",
+            link: "/crm/project/task",
             icon: "list",
           },
         ],

@@ -54,6 +54,8 @@ import DealList from "../pages/crm/deals/list";
 
 import UpdateProject from "../pages/crm/projects/update";
 import ProjectList from "../pages/crm/projects/list";
+import UpdateTask from "../pages/crm/task/update";
+import TaskList from "../pages/crm/task/list";
 
 const adminRoutes = (
   <>
@@ -119,6 +121,8 @@ const adminRoutes = (
         <Route path="project" element={<ProjectLayout />}>
           <Route index element={<ProjectList />} />
           <Route path="update" element={<UpdateProject />} />
+          <Route path="task" element={<TaskList />} />
+          <Route path="task/update" element={<UpdateTask />} />
         </Route>
       </Route>
 

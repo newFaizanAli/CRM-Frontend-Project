@@ -27,9 +27,7 @@ const Index = () => {
   const fetchLeads = async () => {
     try {
       const result = await handleFetch("GET", "/leads");
-      console.log(result.leads)
       if (result.leads) {
-        console.log(result.leads);
         setData(result.leads);
         setFilteredData(result.leads);
       }

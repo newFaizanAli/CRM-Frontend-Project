@@ -43,8 +43,7 @@ const LEADSTYPES = [
   // },
 ];
 
-
-const DEALSTAGES = [ 
+const DEALSTAGES = [
   {
     id: "new",
     type: "New",
@@ -67,5 +66,120 @@ const DEALSTAGES = [
   },
 ];
 
+const PROJECTSTATUS = [
+  {
+    id: "pending",
+    type: "Pending",
+  },
+  {
+    id: "in-progress",
+    type: "In Progress",
+  },
+  {
+    id: "completed",
+    type: "Completed",
+  },
+  {
+    id: "on-hold",
+    type: "On Hold",
+  },
+  {
+    id: "cancelled",
+    type: "Cancelled",
+  },
+];
 
-export { MINPASSLENGTH, MAXPASSLENGTH, DATAPERPAGE, USERSTYPES, RANDOMPASS, LEADSTYPES, DEALSTAGES };
+const TASKPRIORITY = [
+  {
+    id: "low",
+    type: "Low",
+  },
+  {
+    id: "medium",
+    type: "Medium",
+  },
+  {
+    id: "high",
+    type: "High",
+  },
+  {
+    id: "critical",
+    type: "Critical",
+  },
+];
+
+const TASKTYPES = [
+  {
+    id: "general",
+    type: "General",
+  },
+  {
+    id: "follow-up",
+    type: "Follow-up",
+  },
+  {
+    id: "sales",
+    type: "Sales",
+  },
+  {
+    id: "customer-support",
+    type: "Customer Support",
+  },
+  {
+    id: "lead-qualification",
+    type: "Lead Qualification",
+  },
+  {
+    id: "opportunity-managemen",
+    type: "Opportunity Management",
+  },
+  {
+    id: "project-management",
+    type: "Project Management",
+  },
+  {
+    id: "administrative",
+    type: "Administrative",
+  },
+  {
+    id: "escalation",
+    type: "Escalation",
+  },
+  {
+    id: "custom",
+    type: "Custom",
+  },
+];
+
+const TASKSTATUS = [
+  {
+    id: "pending",
+    type: "Pending",
+  },
+  {
+    id: "in-progress",
+    type: "In Progress",
+  },
+  {
+    id: "completed",
+    type: "Completed",
+  },
+  {
+    id: "overdue",
+    type: "Overdue",
+  },
+];
+
+export {
+  MINPASSLENGTH,
+  MAXPASSLENGTH,
+  DATAPERPAGE,
+  USERSTYPES,
+  RANDOMPASS,
+  LEADSTYPES,
+  DEALSTAGES,
+  PROJECTSTATUS,
+  TASKPRIORITY,
+  TASKTYPES,
+  TASKSTATUS
+};

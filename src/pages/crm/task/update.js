@@ -1,9 +1,9 @@
 import React from "react";
-import Form from "../../../components/form/crm/deal";
+import Form from "../../../components/form/crm/task";
 import { Toaster } from "react-hot-toast";
 import { useFetch } from "../../../hooks/useFetch";
 import { useFormik } from "formik";
-import { dealSchema } from "../../../validation/schema";
+import { taskSchema } from "../../../validation/schema";
 import { useLocation, useNavigate } from "react-router-dom";
 import Formhead from "../../../components/formhead";
 
@@ -13,29 +13,28 @@ const Index = () => {
   const locData = location?.state;
   const navigate = useNavigate();
 
- 
   const initialValues = {
     _id: locData?._id,
-    assignedTo: locData?.assignedTo?._id,
-    stage: locData?.stage,
-    createdAt: locData?.createdAt
-    ? new Date(locData?.createdAt).toISOString().split("T")[0]
+    title: locData?.title || "",
+    description: locData?.description || "",
+    project: locData?.project?._id || "",
+    assignedTo: locData?.assignedTo?._id || "",
+    dueDate: locData?.dueDate
+    ? new Date(locData?.dueDate).toISOString().split("T")[0]
     : new Date().toISOString().split("T")[0],
-    expectedCloseDate: locData?.expectedCloseDate
-    ? new Date(locData?.expectedCloseDate).toISOString().split("T")[0]
-    : new Date().toISOString().split("T")[0],
-    customer: locData?.customer?._id,
-    value: locData?.value,
+    status: locData?.status || "",
+    priority: locData?.priority || "",
+    taskType: locData?.taskType || "",
   };
 
   const formik = useFormik({
     initialValues: initialValues,
-    validationSchema: dealSchema,
+    validationSchema: taskSchema,
     enableReinitialize: true,
     onSubmit: async (values) => {
-      const res = await handleFetch("PUT", "/deal", { ...values });
+      const res = await handleFetch("PUT", "/task", { ...values });
       if (res.success) {
-        navigate("/crm/deal");
+        navigate("/crm/project/task");
       }
     },
   });
@@ -45,7 +44,7 @@ const Index = () => {
       <Toaster />
 
       <div className="col-span-5 xl:col-span-3">
-        <Formhead title={"Update Project"}>
+        <Formhead title={"Update Task"}>
           <div className="p-7">
             <Form formik={formik} isUpdate={true} handleFetch={handleFetch}></Form>
           </div>

@@ -44,7 +44,7 @@ const Index = () => {
     await handleDelete(
       `Are you sure you want to delete this deal ${deal.code}?`,
       "DELETE",
-      `/lead/${deal._id}`,
+      `/deal/${deal._id}`,
       handleFetch,
       { _id: deal._id },
       fetchDeals
