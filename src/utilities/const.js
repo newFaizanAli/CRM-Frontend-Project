@@ -170,6 +170,22 @@ const TASKSTATUS = [
   },
 ];
 
+const INTERACTIONTYPES = [
+  {
+    id: "email",
+    type: "Email",
+  },
+  {
+    id: "call",
+    type: "Call",
+  },
+  {
+    id: "meeting",
+    type: "Meeting",
+  },
+];
+
+
 export {
   MINPASSLENGTH,
   MAXPASSLENGTH,
@@ -181,5 +197,6 @@ export {
   PROJECTSTATUS,
   TASKPRIORITY,
   TASKTYPES,
-  TASKSTATUS
+  TASKSTATUS,
+  INTERACTIONTYPES
 };

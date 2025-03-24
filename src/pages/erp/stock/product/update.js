@@ -28,7 +28,7 @@ const Index = () => {
     validationSchema: productSchema,
     enableReinitialize: true,
     onSubmit: async (values) => {
-      const result = await handleFetch("PUT", "/product", { ...values });
+      const result = await handleFetch("PUT", "/products", { ...values });
       if (result?.success) {
         navigate("/stock/product");
       }

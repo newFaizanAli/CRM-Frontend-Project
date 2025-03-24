@@ -74,6 +74,27 @@ export const adminOptions = [
           },
         ],
       },
+
+      {
+        id: "transaction",
+        title: "Transaction",
+        icon: "credit_card", 
+        option: [
+          {
+            id: "add-transaction",
+            title: "Add Transaction",
+            link: "/transaction/add",
+            icon: "add_shopping_cart", 
+          },
+          {
+            id: "transaction",
+            title: "Transactions",
+            link: "/transaction",
+            icon: "receipt_long",
+          },
+        ],
+      }
+      
     ],
   },
 
@@ -141,22 +162,28 @@ export const adminOptions = [
             link: "/crm/project/task",
             icon: "list",
           },
-        ],
-      },
-
-      {
-        id: "reports",
-        title: "Reports",
-        icon: "bar_chart", 
-        option: [
           {
-            id: "reports",
-            title: "Reports",
-            link: "/crm/reports",
-            icon: "insert_chart", 
+            id: "interaction",
+            title: "Interactions",
+            link: "/crm/project/interaction",
+            icon: "list",
           },
         ],
       },
+
+      // {
+      //   id: "reports",
+      //   title: "Reports",
+      //   icon: "bar_chart", 
+      //   option: [
+      //     {
+      //       id: "reports",
+      //       title: "Reports",
+      //       link: "/crm/reports",
+      //       icon: "insert_chart", 
+      //     },
+      //   ],
+      // },
     ],
   },
 

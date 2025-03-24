@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import FormikError from "../../../text/FormikError";
-import { DEALSTAGES } from "../../../../utilities/const";
+import { INTERACTIONTYPES } from "../../../../utilities/const";
 
 const Index = ({ formik, isUpdate, handleFetch }) => {
-  const [users, setUsers] = useState([]);
   const [customers, setCustomers] = useState([]);
+  const [users, setUsers] = useState([]);
 
   const fetchData = async () => {
-    const result = await handleFetch("GET", "/newdeal");
-    if (result?.users) {
-      setUsers(result.users);
-    }
+    const result = await handleFetch("GET", "/newinteraction");
+
     if (result?.customers) {
       setCustomers(result.customers);
+    }
+    if (result?.users) {
+      setUsers(result.users);
     }
   };
 
@@ -22,60 +23,66 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
+      {/* customer & details */}
+
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black dark:text-white"
-            htmlFor="value"
+            htmlFor="customer"
           >
-            Value
+            Customer
           </label>
           <div className="relative">
-            <input
-              className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
-              type="number"
-              name="value"
-              id="value"
-              placeholder="Enter value"
-              value={formik.values.value}
+            <select
+              name="customer"
+              id="customer"
+              value={formik.values.customer}
               onChange={formik.handleChange}
-            />
-            <FormikError formik={formik} fieldName={"value"} />
+              className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+            >
+              <option value="">select customer</option>
+              {customers?.map((e, index) => (
+                <option key={index} value={e._id}>
+                  {`${e.name} (${e?.code})`}
+                </option>
+              ))}
+            </select>
+
+            <FormikError formik={formik} fieldName={"customer"} />
           </div>
         </div>
 
         <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black dark:text-white"
-            htmlFor="statge"
+            htmlFor="details"
           >
-            Stage
+            Details
           </label>
           <div className="relative">
-            <select
-              name="stage"
-              id="stage"
-              value={formik.values.stage}
-              onChange={formik.handleChange}
+            <textarea
+              rows={4}
               className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
-            >
-              <option value="">select stage</option>
-              {DEALSTAGES?.map((e, index) => (
-                <option key={index} value={e.id}>
-                  {e.type}
-                </option>
-              ))}
-            </select>
-            <FormikError formik={formik} fieldName={"stage"} />
+              type="text"
+              name="details"
+              id="details"
+              placeholder="Enter details"
+              value={formik.values.details}
+              onChange={formik.handleChange}
+            />
+            <FormikError formik={formik} fieldName={"details"} />
           </div>
         </div>
       </div>
 
+      {/* status and assigned */}
+
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black dark:text-white"
-            htmlFor="user"
+            htmlFor="assignedTo"
           >
             Assigned to
           </label>
@@ -101,35 +108,59 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
         <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black dark:text-white"
-            htmlFor="customer"
+            htmlFor="status"
           >
-            Customer
+            Status
           </label>
           <div className="relative">
             <select
-              name="customer"
+              name="status"
               id="status"
-              value={formik.values.customer}
+              value={formik.values.status}
               onChange={formik.handleChange}
               className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
             >
-              <option value="">select customer</option>
-              {customers?.map((e, index) => (
-                <option key={index} value={e._id}>
-                  {`${e.name} (${e.code})`}
-                </option>
-              ))}
+              <option value="">select status</option>
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
             </select>
-            <FormikError formik={formik} fieldName={"customer"} />
+            <FormikError formik={formik} fieldName={"status"} />
           </div>
         </div>
       </div>
 
+      {/* type and date */}
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black dark:text-white"
-            htmlFor="createdAt"
+            htmlFor="type"
+          >
+            Type
+          </label>
+          <div className="relative">
+            <select
+              name="type"
+              id="type"
+              value={formik.values.type}
+              onChange={formik.handleChange}
+              className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+            >
+              <option value="">select deal</option>
+              {INTERACTIONTYPES?.map((e, index) => (
+                <option key={index} value={e.id}>
+                  {e.type}
+                </option>
+              ))}
+            </select>
+            <FormikError formik={formik} fieldName={"type"} />
+          </div>
+        </div>
+
+        <div className="w-full sm:w-1/2">
+          <label
+            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            htmlFor="date"
           >
             Date
           </label>
@@ -137,34 +168,13 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
             <input
               className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
               type="date"
-              name="createdAt"
-              id="createdAt"
-              placeholder="select date"
-              value={formik.values.createdAt}
+              name="date"
+              id="date"
+              placeholder="select  date"
+              value={formik.values.date}
               onChange={formik.handleChange}
             />
-            <FormikError formik={formik} fieldName={"createdAt"} />
-          </div>
-        </div>
-
-        <div className="w-full sm:w-1/2">
-          <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
-            htmlFor="expectedCloseDate"
-          >
-            Expected Close Date
-          </label>
-          <div className="relative">
-            <input
-              className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
-              type="date"
-              name="expectedCloseDate"
-              id="expectedCloseDate"
-              placeholder="select closed date"
-              value={formik.values.expectedCloseDate}
-              onChange={formik.handleChange}
-            />
-            <FormikError formik={formik} fieldName={"expectedCloseDate"} />
+            <FormikError formik={formik} fieldName={"date"} />
           </div>
         </div>
       </div>

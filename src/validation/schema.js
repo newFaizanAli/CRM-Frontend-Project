@@ -60,58 +60,65 @@ export const sellingSchema = Yup.object({
 });
 
 export const transactionSchema = Yup.object({
-  transactionType:  Yup.string().required("Transaction type is Required"), // Payable, Receivable
-  paymentType:  Yup.string(), // "Cash", "Digital", "Credit"
+  transactionType: Yup.string().required("Transaction type is Required"), // Payable, Receivable
+  paymentType: Yup.string(), // "Cash", "Digital", "Credit"
   amount: Yup.number().positive().required("Amount is Required"),
-  relatedEntity: Yup.string().required("User type is Required"),  // Supplier, Customer
+  relatedEntity: Yup.string().required("User type is Required"), // Supplier, Customer
   entityId: Yup.string().required("User ID is Required"),
   status: Yup.string().required("Status is Required"), //Pending, Paid
   createdAt: Yup.string().required("Date is Required"),
 });
 
 export const leadSchema = Yup.object({
-  name:  Yup.string().required("Name is Required"), 
-  email:  Yup.string().email().required("Email is Required"), 
+  name: Yup.string().required("Name is Required"),
+  email: Yup.string().email().required("Email is Required"),
   phone: Yup.number().positive().min(11).required("Phone number is required"),
   company: Yup.string(),
   source: Yup.string(),
   assignedTo: Yup.string().required("Assigneded person is Required"),
   status: Yup.string().required("Status is Required"), // "new", "contacted", "qualified", "converted
   createdAt: Yup.string().required("Date is Required"),
-  notes: Yup.string(), 
-  adress:  Yup.string(), 
+  notes: Yup.string(),
+  adress: Yup.string(),
 });
 
 export const dealSchema = Yup.object({
-  customer:  Yup.string().required("Customer is Required"), 
-  stage:  Yup.string().required("Stage is Required"), 
+  customer: Yup.string().required("Customer is Required"),
+  stage: Yup.string().required("Stage is Required"),
   value: Yup.number().positive().required("Value is Required"),
-  assignedTo: Yup.string().required("Assigneded person is Required"), 
-  createdAt: Yup.string().required("Date is Required"), 
-  expectedCloseDate: Yup.string(), 
+  assignedTo: Yup.string().required("Assigneded person is Required"),
+  createdAt: Yup.string().required("Date is Required"),
+  expectedCloseDate: Yup.string(),
 });
 
-
 export const projectSchema = Yup.object({
-  customer:  Yup.string().required("Customer is Required"), 
-  name:  Yup.string().required("Name is Required"), 
+  customer: Yup.string().required("Customer is Required"),
+  name: Yup.string().required("Name is Required"),
   description: Yup.string(),
-  assignedTo: Yup.string().required("Assigneded person is Required"), 
-  startDate: Yup.string(), 
-  endDate: Yup.string(), 
-  deal: Yup.string(), 
-  status: Yup.string(), 
+  assignedTo: Yup.string().required("Assigneded person is Required"),
+  startDate: Yup.string(),
+  endDate: Yup.string(),
+  deal: Yup.string(),
+  status: Yup.string(),
 });
 
 export const taskSchema = Yup.object({
-  title:  Yup.string().required("Title is Required"), 
-  description:  Yup.string(),
+  title: Yup.string().required("Title is Required"),
+  description: Yup.string(),
   project: Yup.string().required("project is Required"),
-  assignedTo: Yup.string().required("Assigneded person is Required"), 
+  assignedTo: Yup.string().required("Assigneded person is Required"),
   dueDate: Yup.string(),
-  status: Yup.string(), 
-  priority: Yup.string(), 
-  taskType: Yup.string(), 
+  status: Yup.string(),
+  priority: Yup.string(),
+  taskType: Yup.string(),
 });
 
+export const interactionSchema = Yup.object({
+  customer: Yup.string().required("Customer is Required"),
+  type: Yup.string().required("Interaction type is Required"),
+  details: Yup.string(),
+  assignedTo: Yup.string().required("Assigneded person is Required"),
+  date: Yup.string(),
+  status: Yup.string(),
+});
 
