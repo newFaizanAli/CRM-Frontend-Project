@@ -1,6 +1,16 @@
 import { toast } from "react-hot-toast";
 import { MINPASSLENGTH, MAXPASSLENGTH, DATAPERPAGE } from "./const";
 
+export const getInitialName = (name) => {
+  if (!name) return "";
+  const words = name.trim().split(" ");
+  const initials = words
+    .slice(0, 2)
+    .map((word) => word[0]?.toUpperCase())
+    .join("");
+  return initials;
+};
+
 export function validatePassword(password) {
   const specialCharacterRegex = /[!@#$%^&*(),.?":{}|<>]/;
   const upperCaseRegex = /[A-Z]/;
@@ -43,7 +53,7 @@ export function validatePassword(password) {
 }
 
 export const fetchData = async (method, url, body, form) => {
-
+  
   // const fullUrl = `http://localhost:8000${url}`;
 
    const vercelUrl = ` https://crm-backend-project.vercel.app${url}`;

@@ -59,10 +59,14 @@ import TaskList from "../pages/crm/task/list";
 import UpdateInteraction from "../pages/crm/interaction/update";
 import InteractionList from "../pages/crm/interaction/list";
 
+import UserProfile from "../pages/authentication/profile"
+
 const adminRoutes = (
   <>
     <Route path="/" element={<RootLayout />}>
       <Route index element={<AdminDashboard />} />
+      {/* stock */}
+
       <Route path="stock" element={<StockLayout />}>
         <Route path="warehouse" element={<WarehouseLayout />}>
           <Route index element={<WarehouseList />} />
@@ -74,7 +78,9 @@ const adminRoutes = (
           <Route path="update" element={<UpdateProduct />} />
         </Route>
       </Route>
+
       {/* buying */}
+
       <Route path="buying" element={<BuyingLayout />}>
         <Route path="purchase" element={<PurchaseLayout />}>
           <Route index element={<PurchaseList />} />
@@ -87,7 +93,9 @@ const adminRoutes = (
           <Route path="update" element={<UpdateSupplier />} />
         </Route>
       </Route>
+
       {/* selling */}
+
       <Route path="selling" element={<SellingLayout />}>
         <Route path="sale" element={<SellingLayout />}>
           <Route index element={<SaleList />} />
@@ -99,7 +107,9 @@ const adminRoutes = (
           <Route path="update" element={<UpdateCustomer />} />
         </Route>
       </Route>
+
       {/* transaction */}
+
       <Route path="transaction" element={<TransactionLayout />}>
         <Route index element={<TransactionList />} />
         <Route path="add" element={<AddTransaction />} />
@@ -107,6 +117,7 @@ const adminRoutes = (
       </Route>
 
       {/* crm */}
+
       <Route path="crm" element={<CRMLayout />}>
         <Route path="user" element={<UserLayout />}>
           <Route index element={<UsersList />} />
@@ -130,7 +141,10 @@ const adminRoutes = (
         </Route>
       </Route>
 
-      
+      {/* profile */}
+
+      <Route path="profile" element={<UserProfile />} />
+
     </Route>
   </>
 );
