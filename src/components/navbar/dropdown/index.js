@@ -13,7 +13,7 @@ export default function Index({loginUser, logout}) {
       const resp = await fetchData("GET", "/signout");
       if (resp.token === false) {
         await logout();
-        Navigate("/");
+        Navigate("/login");
       }
     } catch (e) {
       console.log(e.message);
@@ -36,7 +36,7 @@ export default function Index({loginUser, logout}) {
     <div className="relative inline-block text-left" ref={menuRef}>
       <button
         onClick={toggleMenu}
-        className="px-3 py-2 rounded-full bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+        className="px-3 py-2 rounded-[50%] bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-300"
       >
         {getInitialName(loginUser?.name)}
       </button>

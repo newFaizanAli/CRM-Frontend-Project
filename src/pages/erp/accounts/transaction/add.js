@@ -35,6 +35,7 @@ const Index = () => {
     entityId: "",
     status: "",
     createdAt: new Date().toISOString().split("T")[0],
+    billId: "",
   };
 
   const handleUsertypes = (type) => {

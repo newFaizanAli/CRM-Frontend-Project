@@ -10,8 +10,11 @@ export const useFetch = () => {
   const handleFetch = useCallback(
     async (method, url, body, form) => {
       try {
+  
+
         const result = await fetchData(method, url, body, form);
         
+     
 
         if (result.message) {
           fireToast(result.message, result.success);

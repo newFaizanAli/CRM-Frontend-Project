@@ -1,32 +1,22 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import "./App.css";
-
 import { useContext, useEffect } from "react";
 import { UserRoleContext } from "./context";
-import PageNotFound from "./pages/other/PageNotFound";
 import { publicRoutes, adminRoutes } from "./routes/indexRoutes";
 import { fetchData, fireToast } from "./utilities/functions";
+import ProtectedRoute from "./routes/protected";
 
-const renderRoutesForRole = (userType) => {
-  switch (userType) {
-    case "admin":
-      return adminRoutes;
-    default:
-      return <Route path="*" element={<PageNotFound />} />;
-  }
-};
+import PageNotFound from "./pages/other/PageNotFound"
 
 function App() {
-  const { isLogin, loginUser, login, setLoginUser } =
-    useContext(UserRoleContext);
+  const { login, setLoginUser, isLogin } = useContext(UserRoleContext);
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
         const result = await fetchData("GET", "/check-auth");
-
         if (result.token && result.token === true) {
-          setLoginUser(result.loginUser);
+          await setLoginUser(result.loginUser);
           await login();
         }
       } catch (error) {
@@ -35,12 +25,27 @@ function App() {
     };
 
     checkAuth();
-  }, []);
+  }, [login, setLoginUser]);
+
+
+
 
   return (
     <Router>
-      <Routes>
-        {isLogin ? renderRoutesForRole(loginUser.type) : publicRoutes}
+       <Routes>
+      
+        {publicRoutes}
+
+       
+        {isLogin ? (
+          <Route element={<ProtectedRoute />}>{adminRoutes}</Route>
+        ) : (
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        )}
+
+
+        {/* Fallback Route */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
   );

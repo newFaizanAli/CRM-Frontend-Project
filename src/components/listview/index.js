@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import {
@@ -12,6 +12,8 @@ import ModalWrapper from "../modalwrapper";
 import Pagenator from "../paginator";
 import { MdOutlineEditNote, MdOutlineDeleteOutline } from "../icons";
 import CustomTable from "../table";
+import Loading from "../loading";
+import { UserRoleContext } from "../../context";
 
 const Index = ({
   title,
@@ -21,6 +23,8 @@ const Index = ({
   modalComponent: ModalComponent,
   editRoute,
 }) => {
+  const { isLoading, setLoading } = useContext(UserRoleContext);
+
   const { handleFetch } = useFetch();
   const navigate = useNavigate();
 
@@ -31,8 +35,9 @@ const Index = ({
 
   const fetchData = async () => {
     try {
+      setLoading(true);
       const result = await handleFetch("GET", apiEndpoint);
-
+      setLoading(false);
       const dataKey = Object.keys(result)[0];
 
       if (!dataKey) throw new Error("Unexpected API response format");
@@ -66,72 +71,77 @@ const Index = ({
   const currentData = pageData(currentPage, filteredData);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  {
-    /* <td key={col.key} className="p-3">{item[col.key]}</td> */
-  }
-
   return (
-    <div className="rounded-sm border border-stroke bg-white px-4 pt-4 pb-2 shadow-md sm:px-6 xl:pb-1">
-      <Toaster />
-      <ModalWrapper
-        Comp={ModalComponent}
-        title={title}
-        handleFetch={handleFetch}
-        getList={fetchData}
-      />
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div className="rounded-sm border border-stroke bg-white px-4 pt-4 pb-2 shadow-md sm:px-6 xl:pb-1">
+          <Toaster />
+          <ModalWrapper
+            Comp={ModalComponent}
+            title={title}
+            handleFetch={handleFetch}
+            getList={fetchData}
+          />
 
-      <CustomTable setSearchQuery={setSearchQuery} searchQuery={searchQuery}>
-        <thead>
-          <tr className="bg-gray-200 dark:bg-meta-4">
-            {columns.map((col) => (
-              <th key={col.key} className="p-3 text-left">
-                {col.label}
-              </th>
-            ))}
-            <th className="p-3 text-left">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {currentData.map((item, index) => (
-            <tr key={index} className="dark:bg-meta-4">
-              {columns.map((col) => (
-                <td key={col.key} className="p-3">
-                  {col.render
-                    ? col.render(item[col.key.split(".")[0]])
-                    : item[col.key] || "N/A"}
-                </td>
+          <CustomTable
+            setSearchQuery={setSearchQuery}
+            searchQuery={searchQuery}
+          >
+            <thead>
+              <tr className="bg-gray-200 dark:bg-meta-4">
+                {columns.map((col, index) => (
+                  <th key={index} className="p-3 text-left">
+                    {col.label}
+                  </th>
+                ))}
+                <th className="p-3 text-left">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currentData.map((item, index) => (
+                <tr key={index} className="dark:bg-meta-4">
+                  {columns.map((col, index) => (
+                    <td key={index} className="p-3">
+                      {col.render
+                        ? col.render(item[col.key.split(".")[0]])
+                        : item[col.key] || "N/A"}
+                    </td>
+                  ))}
+                  <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                    <div className="flex items-center space-x-3.5">
+                      {editRoute && (
+                        <button
+                          type="button"
+                          className="hover:text-primary"
+                          onClick={() => navigate(editRoute, { state: item })}
+                        >
+                          <MdOutlineEditNote size={25} />
+                        </button>
+                      )}
+                      <button
+                        type="button"
+                        className="hover:text-danger"
+                        onClick={() => deleteItem(item)}
+                      >
+                        <MdOutlineDeleteOutline size={25} />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
               ))}
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <div className="flex items-center space-x-3.5">
-                  {editRoute && (
-                    <button
-                      type="button"
-                      className="hover:text-primary"
-                      onClick={() => navigate(editRoute, { state: item })}
-                    >
-                      <MdOutlineEditNote size={25} />
-                    </button>
-                  )}
-                  <button
-                    type="button"
-                    className="hover:text-danger"
-                    onClick={() => deleteItem(item)}
-                  >
-                    <MdOutlineDeleteOutline size={25} />
-                  </button>
-                </div>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </CustomTable>
+            </tbody>
+          </CustomTable>
 
-      <Pagenator
-        filteredData={filteredData}
-        paginate={paginate}
-        currentPage={currentPage}
-      />
-    </div>
+          <Pagenator
+            filteredData={filteredData}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        </div>
+      )}
+    </>
   );
 };
 

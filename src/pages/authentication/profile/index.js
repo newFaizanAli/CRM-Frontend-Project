@@ -134,7 +134,7 @@ const Index = () => {
                 <div className="w-full sm:w-1/2">
                   <div className="relative">
                     <button
-                      className="mt-3 w-full border border-stroke rounded bg-transparent py-3 px-6 text-white  bg-gray-700 hover:bg-gray-800 "
+                      className="bg-gray-700 mt-3 w-full border border-stroke rounded py-3 px-6 text-white hover:bg-gray-800 "
                       type="button"
                       onClick={() => resetPassword()}
                     >

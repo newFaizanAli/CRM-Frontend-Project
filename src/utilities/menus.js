@@ -1,5 +1,4 @@
-export const adminOptions = [
-  
+export const menuOptions = [
   {
     id: "erp",
     title: "ERP",
@@ -11,10 +10,16 @@ export const adminOptions = [
         icon: "inventory_2",
         option: [
           {
+            id: "dashboard",
+            title: "Dashboard",
+            link: "/stock/dashboard",
+          },
+
+          {
             id: "warehouse",
             title: "Warehouse",
             link: "/stock/warehouse",
-            icon: "warehouse", 
+            icon: "warehouse",
           },
           {
             id: "category",
@@ -33,8 +38,14 @@ export const adminOptions = [
       {
         id: "buying",
         title: "Buying",
-        icon: "shopping_cart", 
+        icon: "shopping_cart",
         option: [
+          {
+            id: "dashboard",
+            title: "Dashboard",
+            link: "/buying/dashboard",
+            // icon: "storefront",
+          },
           {
             id: "suppliers",
             title: "Suppliers",
@@ -45,7 +56,7 @@ export const adminOptions = [
             id: "purchase",
             title: "Purchase",
             link: "/buying/purchase",
-            icon: "shopping_basket", 
+            icon: "shopping_basket",
           },
           {
             id: "purchase-confirm",
@@ -58,19 +69,19 @@ export const adminOptions = [
       {
         id: "selling",
         title: "Selling",
-        icon: "sell", 
+        icon: "sell",
         option: [
           {
             id: "customers",
             title: "Customers",
             link: "/selling/customer",
-            icon: "group", 
+            icon: "group",
           },
           {
             id: "sales",
             title: "Sales",
             link: "/selling/sale",
-            icon: "point_of_sale", 
+            icon: "point_of_sale",
           },
         ],
       },
@@ -78,13 +89,13 @@ export const adminOptions = [
       {
         id: "transaction",
         title: "Transaction",
-        icon: "credit_card", 
+        icon: "credit_card",
         option: [
           {
             id: "add-transaction",
             title: "Add Transaction",
             link: "/transaction/add",
-            icon: "add_shopping_cart", 
+            icon: "add_shopping_cart",
           },
           {
             id: "transaction",
@@ -92,9 +103,9 @@ export const adminOptions = [
             link: "/transaction",
             icon: "receipt_long",
           },
+          
         ],
-      }
-      
+      },
     ],
   },
 
@@ -174,13 +185,13 @@ export const adminOptions = [
       // {
       //   id: "reports",
       //   title: "Reports",
-      //   icon: "bar_chart", 
+      //   icon: "bar_chart",
       //   option: [
       //     {
       //       id: "reports",
       //       title: "Reports",
       //       link: "/crm/reports",
-      //       icon: "insert_chart", 
+      //       icon: "insert_chart",
       //     },
       //   ],
       // },
@@ -194,3 +205,6 @@ export const adminOptions = [
     link: "/help",
   },
 ];
+
+
+

@@ -1,9 +1,13 @@
 import React, { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const UserRoleContext = createContext();
 
 const Context = ({ children }) => {
+
   const [isLogin, setIsLogin] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+ 
   const [loginUser, setLoginUser] = useState({
     name: "",
     email: "",
@@ -21,6 +25,8 @@ const Context = ({ children }) => {
       email: "",
       type: "",
     });
+   
+ 
   };
 
   const contextValue = {
@@ -29,6 +35,8 @@ const Context = ({ children }) => {
     logout,
     loginUser,
     setLoginUser,
+    isLoading, 
+    setLoading
   };
 
   return (

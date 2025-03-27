@@ -96,6 +96,7 @@ const Index = () => {
             <th className="p-3 text-left">Supplier</th>
             <th className="p-3 text-left">Total Amount</th>
             <th className="p-3 text-left">Status</th>
+            <th className="p-3 text-left">Bill</th>
             <th className="p-3 text-left">Date</th>
             <th className="p-3 text-left">Actions</th>
           </tr>
@@ -118,6 +119,15 @@ const Index = () => {
                 >
                   {purchase.status === "Completed" ? "Completed" : "Pending"}
                 </td>
+
+                <td
+                  className={`p-3 font-semibold ${
+                    purchase?.billed ? "text-green-600" : "text-red-600"
+                  }`}
+                >
+                  {purchase?.billed ? "payed" : "to bill"}
+                </td>
+
                 <td className="p-3">
                   {new Date(purchase.createdAt).toLocaleDateString()}
                 </td>

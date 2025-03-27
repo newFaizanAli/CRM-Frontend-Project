@@ -1,6 +1,6 @@
 
 import publicRoutes from './publicRoutes'
-import adminRoutes from './adminRoutes'
+import adminRoutes from './privateRoutes'
 
 export {
     publicRoutes,

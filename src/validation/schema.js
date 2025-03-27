@@ -67,6 +67,7 @@ export const transactionSchema = Yup.object({
   entityId: Yup.string().required("User ID is Required"),
   status: Yup.string().required("Status is Required"), //Pending, Paid
   createdAt: Yup.string().required("Date is Required"),
+  billId: Yup.string()
 });
 
 export const leadSchema = Yup.object({

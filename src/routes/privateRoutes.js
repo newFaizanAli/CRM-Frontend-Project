@@ -18,10 +18,15 @@ import LeadLayout from "../layouts/admin/crm/lead";
 import DealLayout from "../layouts/admin/crm/deal";
 import ProjectLayout from "../layouts/admin/crm/project";
 
+// Dashboard
+
+import StockDashboard from "../pages/dashboard/erp/stock";
+import BuyingDashboard from "../pages/dashboard/erp/buying";
+
 // pages
+
 import AdminDashboard from "../pages/dashboard/admin";
 import WarehouseLayout from "../layouts/admin/stock";
-// import AddWarehouse from "../pages/erp/stock/warehouse/add";
 import WarehouseList from "../pages/erp/stock/warehouse/list";
 import UpdateWarehouse from "../pages/erp/stock/warehouse/update";
 import CategoryPage from "../pages/erp/stock/category";
@@ -44,7 +49,6 @@ import UpdateSale from "../pages/erp/selling/sales/update";
 import TransactionList from "../pages/erp/accounts/transaction/list";
 import AddTransaction from "../pages/erp/accounts/transaction/add";
 import UpdateTransaction from "../pages/erp/accounts/transaction/update";
-
 import UpdateUser from "../pages/crm/user/update";
 import UsersList from "../pages/crm/user/list";
 import UpdateLead from "../pages/crm/leads/update";
@@ -59,29 +63,34 @@ import TaskList from "../pages/crm/task/list";
 import UpdateInteraction from "../pages/crm/interaction/update";
 import InteractionList from "../pages/crm/interaction/list";
 
-import UserProfile from "../pages/authentication/profile"
+import UserProfile from "../pages/authentication/profile";
+
+import PageNotFound from "../pages/other/PageNotFound";
+import Unauthorized from "../pages/other/unauthorized";
+
 
 const adminRoutes = (
   <>
     <Route path="/" element={<RootLayout />}>
       <Route index element={<AdminDashboard />} />
       {/* stock */}
-
-      <Route path="stock" element={<StockLayout />}>
-        <Route path="warehouse" element={<WarehouseLayout />}>
-          <Route index element={<WarehouseList />} />
-          <Route path="update" element={<UpdateWarehouse />} />
+    
+        <Route path="stock" element={<StockLayout />}>
+          <Route path="dashboard" element={<StockDashboard />} />
+          <Route path="warehouse" element={<WarehouseLayout />}>
+            <Route index element={<WarehouseList />} />
+            <Route path="update" element={<UpdateWarehouse />} />
+          </Route>
+          <Route path="category" element={<CategoryPage />} />
+          <Route path="product" element={<ProductLayout />}>
+            <Route index element={<ProductList />} />
+            <Route path="update" element={<UpdateProduct />} />
+          </Route>
         </Route>
-        <Route path="category" element={<CategoryPage />} />
-        <Route path="product" element={<ProductLayout />}>
-          <Route index element={<ProductList />} />
-          <Route path="update" element={<UpdateProduct />} />
-        </Route>
-      </Route>
-
+     
       {/* buying */}
-
       <Route path="buying" element={<BuyingLayout />}>
+        <Route path="dashboard" element={<BuyingDashboard />} />
         <Route path="purchase" element={<PurchaseLayout />}>
           <Route index element={<PurchaseList />} />
           <Route path="add" element={<AddPurchase />} />
@@ -93,9 +102,7 @@ const adminRoutes = (
           <Route path="update" element={<UpdateSupplier />} />
         </Route>
       </Route>
-
       {/* selling */}
-
       <Route path="selling" element={<SellingLayout />}>
         <Route path="sale" element={<SellingLayout />}>
           <Route index element={<SaleList />} />
@@ -107,17 +114,14 @@ const adminRoutes = (
           <Route path="update" element={<UpdateCustomer />} />
         </Route>
       </Route>
-
       {/* transaction */}
-
       <Route path="transaction" element={<TransactionLayout />}>
         <Route index element={<TransactionList />} />
         <Route path="add" element={<AddTransaction />} />
         <Route path="update" element={<UpdateTransaction />} />
+      
       </Route>
-
       {/* crm */}
-
       <Route path="crm" element={<CRMLayout />}>
         <Route path="user" element={<UserLayout />}>
           <Route index element={<UsersList />} />
@@ -140,11 +144,10 @@ const adminRoutes = (
           <Route path="interaction/update" element={<UpdateInteraction />} />
         </Route>
       </Route>
-
       {/* profile */}
-
       <Route path="profile" element={<UserProfile />} />
-
+      <Route path="/unauthorized" element={<Unauthorized />} />
+      <Route path="*" element={<PageNotFound />} />;
     </Route>
   </>
 );
