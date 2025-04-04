@@ -96,7 +96,7 @@ const Index = ({
                     {col.label}
                   </th>
                 ))}
-                <th className="p-3 text-left">Actions</th>
+                 <th className="p-3 text-left">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -109,7 +109,7 @@ const Index = ({
                         : item[col.key] || "N/A"}
                     </td>
                   ))}
-                  <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <div className="flex items-center space-x-3.5">
                       {editRoute && (
                         <button

@@ -7,7 +7,7 @@ const Index = ({ formik, isUpdate }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="name"
           >
             Name
@@ -28,7 +28,7 @@ const Index = ({ formik, isUpdate }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="phone"
           >
             Phone
@@ -52,7 +52,7 @@ const Index = ({ formik, isUpdate }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="email"
           >
             Email
@@ -73,7 +73,7 @@ const Index = ({ formik, isUpdate }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="status"
           >
             Status
@@ -99,7 +99,7 @@ const Index = ({ formik, isUpdate }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
       <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="company"
           >
             Company
@@ -120,7 +120,7 @@ const Index = ({ formik, isUpdate }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="address"
           >
             Address

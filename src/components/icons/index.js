@@ -1,4 +1,12 @@
-import { FaRegEyeSlash, FaRegEye, FaLocationArrow, FaArrowDown, FaArrowUp, FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import {
+  FaRegEyeSlash,
+  FaRegEye,
+  FaLocationArrow,
+  FaArrowDown,
+  FaArrowUp,
+  FaArrowRight,
+  FaArrowLeft,
+} from "react-icons/fa";
 import { CiMail, CiUser, CiSearch, CiViewList } from "react-icons/ci";
 import { FaLocationDot, FaLocationPin } from "react-icons/fa6";
 import { MdOutlineDeleteOutline, MdOutlineEditNote } from "react-icons/md";
@@ -17,6 +25,9 @@ export {
   GiConfirmed,
   CiViewList,
   FaLocationArrow,
-
-  FaArrowDown, FaArrowUp, FaArrowRight, FaArrowLeft
+  FaArrowDown,
+  FaArrowUp,
+  FaArrowRight,
+  FaArrowLeft,
+    
 };

@@ -14,7 +14,6 @@ export const menuOptions = [
             title: "Dashboard",
             link: "/stock/dashboard",
           },
-
           {
             id: "warehouse",
             title: "Warehouse",
@@ -92,17 +91,24 @@ export const menuOptions = [
         icon: "credit_card",
         option: [
           {
-            id: "add-transaction",
-            title: "Add Transaction",
-            link: "/transaction/add",
-            icon: "add_shopping_cart",
-          },
-          {
             id: "transaction",
             title: "Transactions",
             link: "/transaction",
             icon: "receipt_long",
           },
+          {
+            id: "payable",
+            title: "Payable",
+            link: "/payable",
+            icon: "account_balance_wallet", 
+          },
+          // {
+          //   id: "received",
+          //   title: "Receivable",
+          //   link: "/transaction/receivable",
+          //   icon: "attach_money",
+          // },
+          
           
         ],
       },

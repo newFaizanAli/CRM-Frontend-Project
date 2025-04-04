@@ -26,10 +26,12 @@ export const RoutePermissions = {
   "/selling/sale/add": [Roles.ADMIN, Roles.SUBADMIN],
   "/selling/sale/update": [Roles.ADMIN, Roles.SUBADMIN],
 
-  "/transaction/add": [Roles.ADMIN, Roles.SUBADMIN],
   "/transaction/update": [Roles.ADMIN, Roles.SUBADMIN],
   "/transaction": [Roles.ADMIN, Roles.SUBADMIN],
-
+  "/payable": [Roles.ADMIN, Roles.SUBADMIN],
+  "/payable/purchase": [Roles.ADMIN, Roles.SUBADMIN],
+  "/payable/purchase/invoice": [Roles.ADMIN, Roles.SUBADMIN],
+  "/payable/list": [Roles.ADMIN, Roles.SUBADMIN],
 
   "/crm/user": [Roles.ADMIN],
   "/crm/user/update": [Roles.ADMIN],

@@ -10,7 +10,7 @@ const Index = () => {
   const fetchData = async () => {
     const resp = await handleFetch("GET", "/erp/stock/dashboard");
     const result = { ...resp };
-    console.log(result);
+    // console.log(result);
     setData(result);
   };
 

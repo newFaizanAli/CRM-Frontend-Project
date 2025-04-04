@@ -41,7 +41,7 @@ const Index = () => {
                 name="email"
                 type="email"
                 placeholder="Enter email"
-                className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none"
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 autoComplete="email"
@@ -64,7 +64,7 @@ const Index = () => {
                 name="password"
                 type={hidePass ? "password" : "text"}
                 placeholder="Enter password"
-                className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary"
+                className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 text-black outline-none focus:border-primary focus-visible:shadow-none "
                 value={formik.values.password}
                 onChange={formik.handleChange}
                 autoComplete="current-password"

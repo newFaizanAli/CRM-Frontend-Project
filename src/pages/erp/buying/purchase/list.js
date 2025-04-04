@@ -15,6 +15,7 @@ import {
 import Pagenator from "../../../../components/paginator";
 import CustomTable from "../../../../components/table";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../../../components/loading";
 
 const Index = () => {
   const { handleFetch } = useFetch();
@@ -24,13 +25,16 @@ const Index = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedPurchase, setExpandedPurchase] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchPurchases = useCallback(async () => {
     try {
-      const result = await handleFetch("GET", "/purchases");
+      setIsLoading(true);
+      const result = await handleFetch("GET", "/purchase");
       if (result.purchases) {
         setData(result.purchases);
         setFilteredData(result.purchases);
+        setIsLoading(false);
       }
     } catch (error) {
       fireToast(error.message, false);
@@ -79,7 +83,9 @@ const Index = () => {
   const currentData = pageData(currentPage, filteredData);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  return (
+  return isLoading ? (
+    <Loading />
+  ) : (
     <div className="rounded-sm border border-stroke bg-white px-4 pt-4 pb-2 shadow-md sm:px-6 xl:pb-1">
       <div className="flex justify-end">
         <button
@@ -95,8 +101,8 @@ const Index = () => {
             <th className="p-3 text-left">Code</th>
             <th className="p-3 text-left">Supplier</th>
             <th className="p-3 text-left">Total Amount</th>
+            <th className="p-3 text-left">Payment</th>
             <th className="p-3 text-left">Status</th>
-            <th className="p-3 text-left">Bill</th>
             <th className="p-3 text-left">Date</th>
             <th className="p-3 text-left">Actions</th>
           </tr>
@@ -108,6 +114,7 @@ const Index = () => {
                 <td className="p-3">{purchase?.code}</td>
                 <td className="p-3">{`${purchase?.supplierId?.name} - ${purchase?.supplierId?.code}`}</td>
                 <td className="p-3">{purchase?.totalAmount}</td>
+                <td className="p-3">{purchase?.isPaid || "Pending"}</td>
                 <td
                   className={`
                           inline-flex rounded-full bg-opacity-20 mt-3 py-1 px-3 text-sm font-medium
@@ -118,14 +125,6 @@ const Index = () => {
                            }`}
                 >
                   {purchase.status === "Completed" ? "Completed" : "Pending"}
-                </td>
-
-                <td
-                  className={`p-3 font-semibold ${
-                    purchase?.billed ? "text-green-600" : "text-red-600"
-                  }`}
-                >
-                  {purchase?.billed ? "payed" : "to bill"}
                 </td>
 
                 <td className="p-3">
@@ -168,11 +167,22 @@ const Index = () => {
                         <GiConfirmed size={25} />
                       </button>
                     )}
+
+                    <button
+                      type="button"
+                      className="bg-gray-800 py-2 px-3 text-center hover:bg-gray-900 text-white font-medium text-md rounded-md"
+                      
+                      onClick={() => navigate('/payable/purchase/invoice', {
+                      state : {id : purchase?._id}
+                    })}
+                    >
+                      Payment
+                    </button>
                   </div>
                 </td>
               </tr>
               {expandedPurchase === purchase._id && (
-                <tr className="bg-gray-100 dark:bg-meta-3">
+                <tr className="bg-gray-100">
                   <td colSpan={4} className="p-3">
                     <strong>Items:</strong>
                     <ul className="mt-2">

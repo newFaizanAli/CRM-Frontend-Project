@@ -5,7 +5,7 @@ const Index = ({ children, title, onClose }) => {
     <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
       <div className="bg-white  w-full max-w-lg p-4">
         <div className="border-b border-stroke py-3 px-1 flex justify-between">
-          <h3 className="font-medium text-black dark:text-white">
+          <h3 className="font-medium text-black">
             {title} Information
           </h3>
           <button

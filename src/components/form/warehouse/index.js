@@ -6,7 +6,7 @@ const Index = ({ formik, isUpdate }) => {
     <form onSubmit={formik.handleSubmit}>
       <div className="mb-5.5">
         <label
-          className="mb-3 block text-sm font-medium text-black dark:text-white"
+          className="mb-3 block text-sm font-medium text-black"
           htmlFor="area"
         >
           Area
@@ -28,7 +28,7 @@ const Index = ({ formik, isUpdate }) => {
 
       <div className="mb-5.5">
         <label
-          className="mb-3 block text-sm font-medium text-black dark:text-white"
+          className="mb-3 block text-sm font-medium text-black"
           htmlFor="city"
         >
           City

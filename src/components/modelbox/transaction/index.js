@@ -13,14 +13,13 @@ const Index = ({ isOpen, onClose, handleFetch, getList }) => {
     entityId: "",
     status: "",
     createdAt: new Date().toISOString().split("T")[0],
-    billId: "",
   };
 
   const formik = useFormik({
     initialValues: initialValues,
     validationSchema: transactionSchema,
     onSubmit: async (values) => {
-      const res = await handleFetch("POST", "/deal", { ...values });
+      const res = await handleFetch("POST", "/transaction", { ...values });
       if (res.success) {
         await getList();
         formik.resetForm();
@@ -32,8 +31,8 @@ const Index = ({ isOpen, onClose, handleFetch, getList }) => {
   if (!isOpen) return null;
 
   return (
-    <Box title={"Deal"} onClose={onClose}>
-      <div className="p-2 h-80 overflow-scroll">
+    <Box title={"Transaction"} onClose={onClose}>
+      <div className="p-2 overflow-scroll">
         <Form formik={formik} handleFetch={handleFetch} />
       </div>
     </Box>

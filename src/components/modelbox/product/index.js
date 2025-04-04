@@ -19,7 +19,7 @@ const Index = ({ isOpen, onClose, handleFetch, getList }) => {
     initialValues: initialValues,
     validationSchema: productSchema,
     onSubmit: async (values) => {
-      const res = await handleFetch("POST", "/product/add", { ...values });
+      const res = await handleFetch("POST", "/products/add", { ...values });
       if (res.success) {
         await getList();
         formik.resetForm();

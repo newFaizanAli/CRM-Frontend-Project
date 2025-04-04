@@ -1,5 +1,4 @@
 import React from "react";
-import { CiSearch } from "../icons";
 
 const Index = ({ children, searchQuery, setSearchQuery }) => {
   return (

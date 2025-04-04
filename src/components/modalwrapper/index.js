@@ -6,14 +6,16 @@ const Index = ({ Comp, title, handleFetch, getList }) => {
 
   return (
     <>
-      <div className="flex justify-end">
-        <button
-          className="bg-gray-800 text-white py-2 px-4 rounded hover:bg-gray-700 transition"
-          onClick={openModal}
-        >
-          + Add {title}
-        </button>
-      </div>
+      
+        <div className="flex justify-end">
+          <button
+            className="bg-gray-800 text-white py-2 px-4 rounded hover:bg-gray-700 transition"
+            onClick={openModal}
+          >
+            + Add {title}
+          </button>
+        </div>
+      
       {Comp && (
         <Comp
           title={title}

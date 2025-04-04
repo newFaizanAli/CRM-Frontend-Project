@@ -151,3 +151,43 @@ export const handleDelete = async (
     console.error(error.message);
   }
 };
+
+export const calculateTotalWithDiscount = (totalAmount, discountAmount) => {
+  if (typeof totalAmount !== "number" || typeof discountAmount !== "number") {
+    throw new Error("Both totalAmount and discountAmount should be numbers.");
+  }
+
+  const totalWithDiscount = totalAmount - (totalAmount * discountAmount) / 100;
+  return totalWithDiscount.toFixed(2); 
+};
+
+export const calculateTotalWithTax = (totalAmount, taxAmount) => {
+  if (typeof totalAmount !== "number" || typeof taxAmount !== "number") {
+    throw new Error("Both totalAmount and taxAmount should be numbers.");
+  }
+
+  const totalWithTax = totalAmount + (totalAmount * taxAmount) / 100;
+  return totalWithTax.toFixed(2); 
+};
+
+export const calculateGrandTotal = (totalAmount, discountPercent, taxPercent) => {
+  
+  totalAmount = Number(totalAmount) || 0;
+  discountPercent = Number(discountPercent) || 0;
+  taxPercent = Number(taxPercent) || 0;
+
+ 
+  const discountAmount = (totalAmount * discountPercent) / 100;
+
+  
+  const totalAfterDiscount = totalAmount - discountAmount;
+
+  
+  const taxAmount = (totalAfterDiscount * taxPercent) / 100;
+
+
+  const grandTotal = totalAfterDiscount + taxAmount;
+
+  return grandTotal;
+};
+

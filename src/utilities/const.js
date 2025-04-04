@@ -185,6 +185,57 @@ const INTERACTIONTYPES = [
   },
 ];
 
+// Transaction
+
+
+const PAYMENTMETHODS = [
+  {
+    id: "CASH",
+    method: "Cash",
+  },
+  {
+    id: "ONLINE",
+    method: "Online",
+  },
+  {
+    id: "CHEQUE",
+    method: "Cheque",
+  },
+  {
+    id: "BANKTRANSFER",
+    method: "Bank Transfer",
+  },
+  {
+    id: "OTHER",
+    method: "Other",
+  },
+];
+
+
+
+const PAYMENTSTATUS = [
+  {
+    id: "ADVANCE",
+    status: "Advance",
+  },
+  {
+    id: "PARTIAL",
+    status: "Partial",
+  },
+  {
+    id: "PENDING",
+    status: "Pending",
+  },
+  {
+    id: "COMPLETE",
+    status: "Complete",
+  },
+  {
+    id: "OTHER",
+    status: "Other",
+  },
+];
+
 
 export {
   MINPASSLENGTH,
@@ -198,5 +249,7 @@ export {
   TASKPRIORITY,
   TASKTYPES,
   TASKSTATUS,
-  INTERACTIONTYPES
+  INTERACTIONTYPES,
+  PAYMENTMETHODS,
+  PAYMENTSTATUS
 };

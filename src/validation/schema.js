@@ -123,3 +123,14 @@ export const interactionSchema = Yup.object({
   status: Yup.string(),
 });
 
+
+export const payablePurchase = Yup.object({
+  method:  Yup.string().required("Payment method is Required"),
+  status: Yup.string().required("Payment status is Required"),
+  paid: Yup.number().positive().required("Paid amount is Required"),
+  tax: Yup.number().required("Tax % is Required"),
+  discount: Yup.number().required("Discount % is Required"),
+  paymentDate : Yup.string().required("Date is Required"),
+  purchase : Yup.string()
+});
+

@@ -25,7 +25,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="value"
           >
             Value
@@ -46,7 +46,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="statge"
           >
             Stage
@@ -74,7 +74,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="user"
           >
             Assigned to
@@ -100,7 +100,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="customer"
           >
             Customer
@@ -128,7 +128,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="createdAt"
           >
             Date
@@ -149,7 +149,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="expectedCloseDate"
           >
             Expected Close Date

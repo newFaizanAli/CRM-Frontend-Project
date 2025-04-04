@@ -30,7 +30,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="title"
           >
             Title
@@ -51,7 +51,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="description"
           >
             Description
@@ -77,7 +77,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="project"
           >
             Project
@@ -103,7 +103,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="priority"
           >
             Priority
@@ -134,7 +134,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="assignedTo"
           >
             Assigned to
@@ -160,7 +160,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="status"
           >
             Status
@@ -190,7 +190,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="taskType"
           >
             Task type
@@ -216,7 +216,7 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
 
         <div className="w-full sm:w-1/2">
           <label
-            className="mb-3 block text-sm font-medium text-black dark:text-white"
+            className="mb-3 block text-sm font-medium text-black"
             htmlFor="dueDate"
           >
             Due date

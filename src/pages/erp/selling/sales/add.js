@@ -138,7 +138,7 @@ const Index = () => {
         <div className="col-span-5 xl:col-span-3">
           <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="border-b border-stroke py-4 px-7 dark:border-strokedark">
-              <h3 className="font-medium text-black dark:text-white">
+              <h3 className="font-medium text-black">
                 Selling Information
               </h3>
             </div>
@@ -147,7 +147,7 @@ const Index = () => {
                 <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
                   {/* Supplier Selection */}
                   <div className="w-full sm:w-1/2">
-                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label className="mb-3 block text-sm font-medium text-black">
                       Customer
                     </label>
                     <div className="relative">
@@ -170,7 +170,7 @@ const Index = () => {
 
                   {/* Total Amount */}
                   <div className="w-full sm:w-1/2">
-                    <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                    <label className="mb-3 block text-sm font-medium text-black">
                       Total Amount
                     </label>
                     <input
@@ -187,7 +187,7 @@ const Index = () => {
                 <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
                   <div className="w-full sm:w-1/2">
                     <label
-                      className="mb-3 block text-sm font-medium text-black dark:text-white"
+                      className="mb-3 block text-sm font-medium text-black"
                       htmlFor="createdAt"
                     >
                       Date
@@ -209,7 +209,7 @@ const Index = () => {
 
                 {/* Product Selection */}
                 <div className="mb-5.5">
-                  <label className="mb-3 block text-sm font-medium text-black dark:text-white">
+                  <label className="mb-3 block text-sm font-medium text-black">
                     Select Products
                   </label>
                   <select
