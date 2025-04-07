@@ -53,10 +53,9 @@ export function validatePassword(password) {
 }
 
 export const fetchData = async (method, url, body, form) => {
-  
   // const fullUrl = `http://localhost:8000${url}`;
 
-   const vercelUrl = ` https://crm-backend-project.vercel.app${url}`;
+  const vercelUrl = ` https://crm-backend-project.vercel.app${url}`;
 
   const options = {
     method: method,
@@ -158,7 +157,7 @@ export const calculateTotalWithDiscount = (totalAmount, discountAmount) => {
   }
 
   const totalWithDiscount = totalAmount - (totalAmount * discountAmount) / 100;
-  return totalWithDiscount.toFixed(2); 
+  return totalWithDiscount.toFixed(2);
 };
 
 export const calculateTotalWithTax = (totalAmount, taxAmount) => {
@@ -167,27 +166,25 @@ export const calculateTotalWithTax = (totalAmount, taxAmount) => {
   }
 
   const totalWithTax = totalAmount + (totalAmount * taxAmount) / 100;
-  return totalWithTax.toFixed(2); 
+  return totalWithTax.toFixed(2);
 };
 
-export const calculateGrandTotal = (totalAmount, discountPercent, taxPercent) => {
-  
+export const calculateGrandTotal = (
+  totalAmount,
+  discountPercent,
+  taxPercent
+) => {
   totalAmount = Number(totalAmount) || 0;
   discountPercent = Number(discountPercent) || 0;
   taxPercent = Number(taxPercent) || 0;
 
- 
   const discountAmount = (totalAmount * discountPercent) / 100;
 
-  
   const totalAfterDiscount = totalAmount - discountAmount;
 
-  
   const taxAmount = (totalAfterDiscount * taxPercent) / 100;
-
 
   const grandTotal = totalAfterDiscount + taxAmount;
 
   return grandTotal;
 };
-

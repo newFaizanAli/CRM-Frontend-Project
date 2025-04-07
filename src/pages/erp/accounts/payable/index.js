@@ -9,7 +9,8 @@ const Index = () => {
         <h2 className='text-2xl'>Shortcuts</h2>
       </div>
       <div className='shortcut flex gap-5 py-3 px-2'>
-          <Link to={'/payable/purchase'} className='text-md flex gap-3'>Purchase Invoice <FaArrowRight size={14} /></Link>
+      {/* /payable/purchase */}
+          <Link to={'/buying/purchase'} className='text-md flex gap-3'>Purchase Invoice <FaArrowRight size={14} /></Link>
       </div>
       <div className='subheading'>
         <h2 className='text-xl'>Payables</h2>

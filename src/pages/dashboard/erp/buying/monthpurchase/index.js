@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useFetch } from "../../../../../hooks/useFetch";
 import {
   LineChart,
   Line,
@@ -9,13 +8,19 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
+import FilterBox from "../../../../../components/filterbox/buying/monthpurchase";
+import ModalWrapper from "../../../../../components/filterbox/modelwrapper";
 
-const Index = () => {
-  const { handleFetch } = useFetch();
+const Index = ({ handleFetch, suppliers }) => {
   const [data, setData] = useState(null);
+  const [filterValue, setFilterValue] = useState({
+    supplier: null,
+    startDate: null,
+    endDate: null,
+  });
 
   const fetchData = async () => {
-    const resp = await handleFetch("GET", "/erp/buying/dashboard/purchase");
+    const resp = await handleFetch("GET", `/erp/buying/dashboard/purchase/${filterValue?.supplier}/${filterValue?.startDate}/${filterValue?.endDate}`);
     setData(resp?.monthlyData);
   };
 
@@ -23,8 +28,6 @@ const Index = () => {
     fetchData();
   }, []);
 
-
- 
   const monthNames = [
     "Jan",
     "Feb",
@@ -47,11 +50,21 @@ const Index = () => {
   }));
 
   return (
-  
-      <div className="p-4 bg-transparent rounded-2xl shadow-sm border border-gray-300">
-        <h2 className="text-md font-semibold mb-4 text-gray-800">
-          Monthly Purchase Summary
-        </h2>
+    <>
+      <div className="p-4 rounded-2xl shadow-sm border border-gray-300">
+        <div className="flex justify-between mb-4">
+          <h2 className="text-md font-semibold text-gray-800">
+            Monthly Purchase Summary
+          </h2>
+          <ModalWrapper
+            Comp={FilterBox}
+            title={"Monthly Purchase Order"}
+            suppliers={suppliers}
+            handleSet={fetchData}
+            setFilterValue={setFilterValue}
+            filterValue={filterValue}
+          />
+        </div>
         <ResponsiveContainer width="100%" height={200}>
           <LineChart data={chartData}>
             <CartesianGrid strokeDasharray="3 3" />
@@ -67,7 +80,7 @@ const Index = () => {
           </LineChart>
         </ResponsiveContainer>
       </div>
-
+    </>
   );
 };
 

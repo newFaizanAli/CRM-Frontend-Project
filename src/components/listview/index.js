@@ -41,7 +41,6 @@ const Index = ({
       const dataKey = Object.keys(result)[0];
 
       if (!dataKey) throw new Error("Unexpected API response format");
-
       setData(result[dataKey]);
       setFilteredData(result[dataKey]);
     } catch (error) {
@@ -78,12 +77,12 @@ const Index = ({
       ) : (
         <div className="rounded-sm border border-stroke bg-white px-4 pt-4 pb-2 shadow-md sm:px-6 xl:pb-1">
           <Toaster />
-          <ModalWrapper
+          {ModalComponent && <ModalWrapper
             Comp={ModalComponent}
             title={title}
             handleFetch={handleFetch}
             getList={fetchData}
-          />
+          />}
 
           <CustomTable
             setSearchQuery={setSearchQuery}

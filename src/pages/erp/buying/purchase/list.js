@@ -117,7 +117,7 @@ const Index = () => {
                 <td className="p-3">{purchase?.isPaid || "Pending"}</td>
                 <td
                   className={`
-                          inline-flex rounded-full bg-opacity-20 mt-3 py-1 px-3 text-sm font-medium
+                          inline-flex rounded-full bg-opacity-20 mt-6 py-1 px-3 text-sm font-medium
                            ${
                              purchase.status === "Completed"
                                ? "bg-green-500 text-green-700"

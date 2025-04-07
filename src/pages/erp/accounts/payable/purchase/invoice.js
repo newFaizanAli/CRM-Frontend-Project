@@ -17,7 +17,7 @@ const Index = () => {
   const { handleFetch } = useFetch();
   const location = useLocation();
   const navigate = useNavigate();
-  const purchaseId = location?.state?.id;
+  const purchaseId = location?.state?.id || location?.state?.purchase?._id;
   const [data, setData] = useState([]);
   const [paymentDetail, setPaymentDetail] = useState({});
 
@@ -30,8 +30,9 @@ const Index = () => {
 
       const payment = await handleFetch(
         "GET",
-        `/payablepurchase/${purchaseId}`
+        `/payable/purchase/${purchaseId}`
       );
+    
       if (payment.data && payment.success) {
         setPaymentDetail(payment.data);
       }
@@ -49,6 +50,7 @@ const Index = () => {
   }, []);
 
   const initialValues = {
+    id: paymentDetail?._id || "",
     status: paymentDetail?.status || "",
     paid: paymentDetail?.paid || 0,
     method: paymentDetail?.method || "",
@@ -79,10 +81,19 @@ const Index = () => {
         );
       }
 
-      const result = await handleFetch("POST", "/payable/purchase", values);
+      
+
+      let route = { url: "", method: "" };
+      if (initialValues?.id) {
+        route = { url: "/payable/purchase", method: "PUT" };
+      } else {
+        route = { url: "/payable/purchase", method: "POST" };
+      }
+
+      const result = await handleFetch(route.method, route.url, values);
       if (result.success) {
         formik.resetForm();
-        navigate("/payable/purchase");
+        navigate("/payable/list");
       }
     },
   });

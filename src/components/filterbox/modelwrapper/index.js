@@ -1,27 +1,32 @@
 import React from "react";
-import {useModal} from "../../hooks/useModal"
+import { useModal } from "../../../hooks/useModal";
+import { CiFilter } from "../../icons";
 
-const Index = ({ Comp, title, handleFetch, getList }) => {
+const Index = ({ Comp, title, ...rest }) => {
   const { isModalOpen, openModal, closeModal } = useModal();
 
   return (
     <>
       <div className="flex justify-end">
         <button
-          className="bg-gray-800 text-white py-2 px-4 rounded hover:bg-gray-700 transition"
+          className="text-sm border border-gray-300 px-1 bg-gray-200 rounded-md"
           onClick={openModal}
         >
-          + Add {title}
+          <CiFilter size={20} />
         </button>
       </div>
+
+
+    
+
+
 
       {Comp && (
         <Comp
           title={title}
           isOpen={isModalOpen}
           onClose={closeModal}
-          handleFetch={handleFetch}
-          getList={getList}
+          {...rest}
         />
       )}
     </>

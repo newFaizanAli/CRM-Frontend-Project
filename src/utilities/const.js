@@ -211,8 +211,6 @@ const PAYMENTMETHODS = [
   },
 ];
 
-
-
 const PAYMENTSTATUS = [
   {
     id: "ADVANCE",
@@ -237,6 +235,7 @@ const PAYMENTSTATUS = [
 ];
 
 
+
 export {
   MINPASSLENGTH,
   MAXPASSLENGTH,
@@ -251,5 +250,6 @@ export {
   TASKSTATUS,
   INTERACTIONTYPES,
   PAYMENTMETHODS,
-  PAYMENTSTATUS
+  PAYMENTSTATUS,
+  
 };
