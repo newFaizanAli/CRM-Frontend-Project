@@ -8,10 +8,9 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
-import FilterBox from "../../../../../components/filterbox/buying/monthpurchase";
-import ModalWrapper from "../../../../../components/filterbox/modelwrapper";
 
-const Index = ({ handleFetch, suppliers }) => {
+
+const Index = ({ handleFetch, suppliers, ModalWrapper, FilterBox }) => {
   const [data, setData] = useState(null);
   const [filterValue, setFilterValue] = useState({
     supplier: null,

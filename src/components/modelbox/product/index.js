@@ -13,6 +13,7 @@ const Index = ({ isOpen, onClose, handleFetch, getList }) => {
     quantity: 0,
     warehouse: "",
     lowStockThreshold: 0,
+    price: 0
   };
 
   const formik = useFormik({

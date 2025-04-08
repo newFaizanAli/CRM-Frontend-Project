@@ -14,6 +14,7 @@ const Index = () => {
         { key: "code", label: "Code" },
         { key: "productName", label: "Name" },
         { key: "sku", label: "SKU" },
+        { key: "price", label: "Price" },
         {
           key: "category",
           label: "Category",

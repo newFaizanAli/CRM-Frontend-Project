@@ -29,6 +29,7 @@ export const productSchema = Yup.object({
   quantity: Yup.number().required("Quantity is Required"),
   warehouse: Yup.string().required("Warehouse is Required"),
   lowStockThreshold: Yup.number().positive().required("Low Stock is Required"),
+  price:  Yup.number().required("Price is Required"),
 });
 
 export const supplierSchema = Yup.object({
@@ -133,4 +134,15 @@ export const payablePurchase = Yup.object({
   paymentDate : Yup.string().required("Date is Required"),
   purchase : Yup.string()
 });
+
+export const receivableSale = Yup.object({
+  method:  Yup.string().required("Sale method is Required"),
+  status: Yup.string().required("Sale status is Required"),
+  paid: Yup.number().positive().required("Paid ammoun is Required"),
+  tax: Yup.number().required("Tax % is Required"),
+  discount: Yup.number().required("Discount % is Required"),
+  saleDate : Yup.string().required("Date is Required"),
+  sale : Yup.string()
+});
+
 

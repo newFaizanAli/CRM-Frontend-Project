@@ -10,13 +10,13 @@ const Index = () => {
       </div>
       <div className='shortcut flex gap-5 py-3 px-2'>
       {/* /payable/purchase */}
-          <Link to={'/buying/purchase'} className='text-md flex gap-3'>Purchase Invoice <FaArrowRight size={14} /></Link>
+          <Link to={'/selling/sale'} className='text-md flex gap-3'>Sales Invoice <FaArrowRight size={14} /></Link>
       </div>
       <div className='subheading'>
-        <h2 className='text-xl'>Payables</h2>
+        <h2 className='text-xl'>Receiables</h2>
       </div>
       <div className='shortcut flex gap-5 py-3 px-2'>
-          <Link to={'/payable/list'} className='text-md flex gap-3'>Payble List <FaArrowRight size={14} /></Link>
+          <Link to={'/receivable/list'} className='text-md flex gap-3'>Receiables List <FaArrowRight size={14} /></Link>
       </div>
     </div>
   )

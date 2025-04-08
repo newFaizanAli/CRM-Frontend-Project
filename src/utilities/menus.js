@@ -71,6 +71,12 @@ export const menuOptions = [
         icon: "sell",
         option: [
           {
+            id: "dashboard",
+            title: "Dashboard",
+            link: "/selling/dashboard",
+            // icon: "storefront",
+          },
+          {
             id: "customers",
             title: "Customers",
             link: "/selling/customer",
@@ -101,6 +107,12 @@ export const menuOptions = [
             title: "Payable",
             link: "/payable",
             icon: "account_balance_wallet", 
+          },
+          {
+            id: "receivable",
+            title: "Receivable",
+            link: "/receivable",
+            icon: "payments", 
           },
           // {
           //   id: "received",

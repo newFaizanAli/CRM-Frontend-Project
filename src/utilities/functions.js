@@ -53,6 +53,7 @@ export function validatePassword(password) {
 }
 
 export const fetchData = async (method, url, body, form) => {
+
   // const fullUrl = `http://localhost:8000${url}`;
 
   const vercelUrl = ` https://crm-backend-project.vercel.app${url}`;

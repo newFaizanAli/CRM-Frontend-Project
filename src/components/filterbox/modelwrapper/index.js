@@ -9,17 +9,12 @@ const Index = ({ Comp, title, ...rest }) => {
     <>
       <div className="flex justify-end">
         <button
-          className="text-sm border border-gray-300 px-1 bg-gray-200 rounded-md"
+          className="text-sm border border-gray-300 px-1 bg-gray-200 rounded-md hover:bg-gray-300 duration-300"
           onClick={openModal}
         >
           <CiFilter size={20} />
         </button>
       </div>
-
-
-    
-
-
 
       {Comp && (
         <Comp

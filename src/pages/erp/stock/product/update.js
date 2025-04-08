@@ -18,9 +18,10 @@ const Index = () => {
     productName: "" || locData?.productName,
     sku: "" || locData?.sku,
     category: "" || locData?.category?._id,
-    quantity: "" || locData?.quantity,
+    quantity: 0 || locData?.quantity,
     warehouse: "" || locData?.warehouse?._id,
-    lowStockThreshold: "" || locData?.lowStockThreshold,
+    lowStockThreshold: 0 || locData?.lowStockThreshold,
+    price: 0 || locData?.price,
   };
 
   const formik = useFormik({

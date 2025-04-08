@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../../../../hooks/useFetch";
-import MonthPurchase from "./monthpurchase";
-import PurchasePayment from "./purchasepayment";
-import TopSupplier from "./topsuppliers";
+
+import Expense from "./expense"
+
 import TopCards from "./topcards";
 import Loading from "../../../../components/loading";
+import Performance from "./perfomence";
+import Income from "./income"
 import ModalWrapper from "../../../../components/filterbox/modelwrapper";
 import FilterBox from "../../../../components/filterbox/erp/buying";
 
@@ -13,9 +15,9 @@ const Index = () => {
   const [data, setData] = useState(null);
 
   const fetchData = async () => {
-    const resp = await handleFetch("GET", "/erp/buying/dashboard");
+    const resp = await handleFetch("GET", "/erp/sales/dashboard");
     const result = { ...resp };
-
+    // console.log(result)
     setData(result);
   };
 
@@ -36,32 +38,22 @@ const Index = () => {
         <TopCards data={data} />
       </div>
 
-      {/* Monthly Purchase */}
-
-      <div>
-        <MonthPurchase
-          handleFetch={handleFetch}
-          suppliers={data?.suppliers}
-          ModalWrapper={ModalWrapper}
-          FilterBox={FilterBox}
-        />
+      <div className="my-4">
+        <Performance handleFetch={handleFetch} />
       </div>
 
-      {/* top suppliers & purchase payment */}
-
       <div className="w-full flex justify-around my-4 gap-2">
-        <PurchasePayment
+        <Expense
           handleFetch={handleFetch}
-          suppliers={data?.suppliers}
           ModalWrapper={ModalWrapper}
           FilterBox={FilterBox}
         />
-        <TopSupplier
+          <Income
           handleFetch={handleFetch}
-          suppliers={data?.suppliers}
           ModalWrapper={ModalWrapper}
           FilterBox={FilterBox}
         />
+       
       </div>
     </div>
   );

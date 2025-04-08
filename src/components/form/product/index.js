@@ -67,6 +67,27 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
       </div>
 
       <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
+      <div className="w-full sm:w-1/2">
+          <label
+            className="mb-3 block text-sm font-medium text-black"
+            htmlFor="price"
+          >
+            Price
+          </label>
+          <div className="relative">
+            <input
+              className="w-full border border-stroke rounded bg-transparent py-3 px-6 text-black outline-none focus:border-primary focus-visible:shadow-none"
+              type="number"
+              name="price"
+              id="price"
+              placeholder="Enter price"
+              value={formik.values.price}
+              onChange={formik.handleChange}
+            />
+            <FormikError formik={formik} fieldName={"price"} />
+          </div>
+        </div>
+
         <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black"
@@ -95,7 +116,11 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
           </div>
         </div>
 
-        <div className="w-full sm:w-1/2">
+     
+      </div>
+
+      <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
+      <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black"
             htmlFor="warehouse"
@@ -122,9 +147,6 @@ const Index = ({ formik, isUpdate, handleFetch }) => {
             <FormikError formik={formik} fieldName={"warehouse"} />
           </div>
         </div>
-      </div>
-
-      <div className="mb-5.5 flex flex-col gap-5.5 sm:flex-row gap-2">
         <div className="w-full sm:w-1/2">
           <label
             className="mb-3 block text-sm font-medium text-black"

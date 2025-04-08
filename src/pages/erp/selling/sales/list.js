@@ -25,7 +25,7 @@ const Index = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [expandedSales, setExpandedSales] = useState(null);
 
-  const fetchSales = useCallback( async () => {
+  const fetchSales = useCallback(async () => {
     try {
       const result = await handleFetch("GET", "/sales");
       if (result.sales) {
@@ -81,7 +81,7 @@ const Index = () => {
 
   return (
     <div className="rounded-sm border border-stroke bg-white px-4 pt-4 pb-2 shadow-md sm:px-6 xl:pb-1">
-     <div className="flex justify-end">
+      <div className="flex justify-end">
         <button
           className="bg-gray-800 text-white py-2 px-4 rounded hover:bg-primary-dark transition"
           onClick={() => navigate("/selling/sale/add")}
@@ -95,6 +95,7 @@ const Index = () => {
             <th className="p-3 text-left">Code</th>
             <th className="p-3 text-left">Supplier</th>
             <th className="p-3 text-left">Total Amount</th>
+            <th className="p-3 text-left">Payment</th>
             <th className="p-3 text-left">Status</th>
             <th className="p-3 text-left">Date</th>
             <th className="p-3 text-left">Actions</th>
@@ -107,6 +108,7 @@ const Index = () => {
                 <td className="p-3">{sale?.code}</td>
                 <td className="p-3">{`${sale?.customerId?.name} - ${sale?.customerId?.code}`}</td>
                 <td className="p-3">{sale?.totalAmount}</td>
+                <td className="p-3">{sale?.isPaid || "Pending"}</td>
                 <td
                   className={`
                           inline-flex rounded-full bg-opacity-20 mt-3 py-1 px-3 text-sm font-medium
@@ -118,9 +120,10 @@ const Index = () => {
                 >
                   {sale.status === "Completed" ? "Completed" : "Pending"}
                 </td>
-                <td className="p-3">{new Date(sale.createdAt).toLocaleDateString()}</td>
+                <td className="p-3">
+                  {new Date(sale.createdAt).toLocaleDateString()}
+                </td>
 
-               
                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                   <div className="flex items-center space-x-3.5">
                     <button
@@ -157,6 +160,18 @@ const Index = () => {
                         <GiConfirmed size={25} />
                       </button>
                     )}
+
+                    <button
+                      type="button"
+                      className="bg-gray-800 py-2 px-3 text-center hover:bg-gray-900 text-white font-medium text-md rounded-md"
+                      onClick={() =>
+                        navigate("/receivable/sale/invoice", {
+                          state : {id : sale?._id}
+                        })
+                      }
+                    >
+                      Payment
+                    </button>
                   </div>
                 </td>
               </tr>

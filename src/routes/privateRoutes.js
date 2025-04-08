@@ -12,7 +12,7 @@ import SellingLayout from "../layouts/admin/selling";
 import CustomerLayout from "../layouts/admin/customer";
 import TransactionLayout from "../layouts/admin/transaction";
 import PaybleLayout from "../layouts/admin/payble";
-
+import ReceivableLayout from "../layouts/admin/receivable"
 import CRMLayout from "../layouts/admin/crm";
 import UserLayout from "../layouts/admin/crm/user";
 import LeadLayout from "../layouts/admin/crm/lead";
@@ -23,6 +23,7 @@ import ProjectLayout from "../layouts/admin/crm/project";
 
 import StockDashboard from "../pages/dashboard/erp/stock";
 import BuyingDashboard from "../pages/dashboard/erp/buying";
+import SellingDashboard from "../pages/dashboard/erp/selling";
 
 // pages
 
@@ -53,6 +54,11 @@ import PaybleTransaction from "../pages/erp/accounts/payable";
 import PaybleList from "../pages/erp/accounts/payable/list";
 import PayblePurchases from "../pages/erp/accounts/payable/purchase/list";
 import PurchaseInvoice from "../pages/erp/accounts/payable/purchase/invoice";
+
+import ReceivableTransaction from "../pages/erp/accounts/receivable";
+import ReceivableList from "../pages/erp/accounts/receivable/list";
+import ReceivableSales from "../pages/erp/accounts/receivable/sales/list";
+import ReceivableInvoice from "../pages/erp/accounts/receivable/sales/invoice";
 
 import UpdateUser from "../pages/crm/user/update";
 import UsersList from "../pages/crm/user/list";
@@ -106,6 +112,7 @@ const adminRoutes = (
       </Route>
       {/* selling */}
       <Route path="selling" element={<SellingLayout />}>
+        <Route path="dashboard" element={<SellingDashboard />} />
         <Route path="sale" element={<SellingLayout />}>
           <Route index element={<SaleList />} />
           <Route path="add" element={<AddSale />} />
@@ -126,7 +133,14 @@ const adminRoutes = (
         <Route index element={<PaybleTransaction />} />
         <Route path="list" element={<PaybleList />} />
         <Route path="purchase" element={<PayblePurchases />} />
-        <Route path="purchase/invoice" element={<PurchaseInvoice  />} />
+        <Route path="purchase/invoice" element={<PurchaseInvoice />} />
+      </Route>
+      {/* receivable */}
+      <Route path="receivable" element={<ReceivableLayout />}>
+        <Route index element={<ReceivableTransaction />} />
+        <Route path="list" element={<ReceivableList />} />
+        <Route path="sale" element={<ReceivableSales />} />
+        <Route path="sale/invoice" element={<ReceivableInvoice />} />
       </Route>
       {/* crm */}
       <Route path="crm" element={<CRMLayout />}>

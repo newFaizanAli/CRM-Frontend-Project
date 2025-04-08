@@ -9,10 +9,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import FilterBox from "../../../.././../components/filterbox/buying/topsupplier";
-import ModalWrapper from "../../../.././../components/filterbox/modelwrapper";
 
-const Index = ({ handleFetch, suppliers }) => {
+const Index = ({ handleFetch, suppliers, ModalWrapper, FilterBox }) => {
   const [topSupplier, setTopSupplier] = useState(null);
   const [filterValue, setFilterValue] = useState({
     supplier: null,
@@ -62,8 +60,8 @@ const Index = ({ handleFetch, suppliers }) => {
 
       {topSupplier && (
         <>
-          <div className="flex justify-between gap-2">
-            <div className="w-full w-[350px] h-[200px]">
+          <div className="">
+            <div className="w-full w-[500px] h-[200px]">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                   data={chartData}
