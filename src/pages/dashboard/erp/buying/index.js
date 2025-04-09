@@ -32,7 +32,11 @@ const Index = () => {
 
   return (
     <div className="">
+
+   
+
       <div>
+        <h2 className="text-2xl text-gray-700 font-bold py-4">Buying Dashboard</h2>
         <TopCards data={data} />
       </div>
 

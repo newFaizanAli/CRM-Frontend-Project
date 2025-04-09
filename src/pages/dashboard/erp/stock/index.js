@@ -28,11 +28,17 @@ const Index = () => {
   return (
     <div className="p-4 space-y-4">
       {/* Summary Cards */}
-      <TopCard
-        products={data?.products?.length}
-        warehouses={data?.warehouses?.length}
-        lowStockProducts={data?.lowStockCount}
-      />
+
+      <div>
+        <h2 className="text-2xl text-gray-700 font-bold py-4">
+          Stock Dashboard
+        </h2>
+        <TopCard
+          products={data?.products?.length}
+          warehouses={data?.warehouses?.length}
+          lowStockProducts={data?.lowStockCount}
+        />
+      </div>
 
       <div className="flex flex-wrap gap-2">
         {/* Low Stock Products Table */}

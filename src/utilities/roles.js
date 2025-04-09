@@ -27,6 +27,7 @@ export const RoutePermissions = {
   "/selling/sale/add": [Roles.ADMIN, Roles.SUBADMIN],
   "/selling/sale/update": [Roles.ADMIN, Roles.SUBADMIN],
 
+  "/account/dashboard": [Roles.ADMIN, Roles.SUBADMIN],
   "/transaction/update": [Roles.ADMIN, Roles.SUBADMIN],
   "/transaction": [Roles.ADMIN, Roles.SUBADMIN],
   "/payable": [Roles.ADMIN, Roles.SUBADMIN],

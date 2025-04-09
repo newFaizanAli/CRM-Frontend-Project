@@ -7,15 +7,16 @@ import {
   Tooltip,
   ResponsiveContainer,
   CartesianGrid,
-  Legend,
   Cell,
 } from "recharts";
 
 const Index = ({ handleFetch }) => {
+
   const [data, setData] = useState(null);
 
+
   const fetchData = async () => {
-    const resp = await handleFetch("GET", `/erp/sales/dashboard/performance`);
+    const resp = await handleFetch("GET", `/erp/selling/dashboard/performance`);
     setData(resp);
   };
 
@@ -50,9 +51,10 @@ const Index = ({ handleFetch }) => {
     <div className="p-4 rounded-2xl shadow-sm border border-gray-300">
       <div className="flex justify-between mb-4">
         <h2 className="text-md font-semibold text-gray-800">Profit and Loss</h2>
+      
       </div>
 
-      <div className="py-3 flex justify-around text-center">
+      <div className="py-3 flex flex-wrap justify-around text-center">
         <div>
           <p className="text-gray-400 text-md">Total Income This Year</p>
           <h2 className="text-2xl font-medium">{income}</h2>

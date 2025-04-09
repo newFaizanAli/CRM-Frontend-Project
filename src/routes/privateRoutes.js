@@ -12,7 +12,7 @@ import SellingLayout from "../layouts/admin/selling";
 import CustomerLayout from "../layouts/admin/customer";
 import TransactionLayout from "../layouts/admin/transaction";
 import PaybleLayout from "../layouts/admin/payble";
-import ReceivableLayout from "../layouts/admin/receivable"
+import ReceivableLayout from "../layouts/admin/receivable";
 import CRMLayout from "../layouts/admin/crm";
 import UserLayout from "../layouts/admin/crm/user";
 import LeadLayout from "../layouts/admin/crm/lead";
@@ -24,6 +24,7 @@ import ProjectLayout from "../layouts/admin/crm/project";
 import StockDashboard from "../pages/dashboard/erp/stock";
 import BuyingDashboard from "../pages/dashboard/erp/buying";
 import SellingDashboard from "../pages/dashboard/erp/selling";
+import AccountDashboard from "../pages/dashboard/account";
 
 // pages
 
@@ -123,6 +124,8 @@ const adminRoutes = (
           <Route path="update" element={<UpdateCustomer />} />
         </Route>
       </Route>
+      {/* accounts */}
+      <Route path="/account/dashboard" element={<AccountDashboard />} />
       {/* transaction */}
       <Route path="transaction" element={<TransactionLayout />}>
         <Route index element={<TransactionList />} />

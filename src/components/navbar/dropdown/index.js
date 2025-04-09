@@ -1,19 +1,21 @@
 import { useState, useRef, useEffect } from "react";
 import { fetchData, getInitialName } from "../../../utilities/functions";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Index({loginUser, logout}) {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
+  const navigate = useNavigate()
 
   const handleLogout = async () => {
     try {
       const resp = await fetchData("GET", "/signout");
+  
       if (resp.token === false) {
         await logout();
-        Navigate("/login");
+        navigate("/login");
       }
     } catch (e) {
       console.log(e.message);

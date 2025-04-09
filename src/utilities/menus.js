@@ -92,10 +92,16 @@ export const menuOptions = [
       },
 
       {
-        id: "transaction",
-        title: "Transaction",
+        id: "accounts",
+        title: "Accounts",
         icon: "credit_card",
         option: [
+          {
+            id: "dashboard",
+            title: "Dashboard",
+            link: "/account/dashboard",
+           
+          },
           {
             id: "transaction",
             title: "Transactions",

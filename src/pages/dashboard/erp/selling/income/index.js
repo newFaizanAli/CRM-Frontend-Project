@@ -21,7 +21,7 @@ const Index = ({ handleFetch, ModalWrapper, FilterBox }) => {
   const fetchData = async () => {
     const resp = await handleFetch(
       "GET",
-      `/erp/receiving/dashboard/sales/${filterValue?.startDate}/${filterValue?.endDate}`
+      `/erp/selling/dashboard/sales/${filterValue?.startDate}/${filterValue?.endDate}`
     );
     setData(resp?.monthlyData || []);
   };

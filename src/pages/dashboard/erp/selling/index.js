@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useFetch } from "../../../../hooks/useFetch";
 
-import Expense from "./expense"
+import Performance from "./perfomence";
+import Expense from "./expense";
+import Income from "./income";
+import SalesAnalysis from "./salesanalysis";
+import TopCustomer from "./topcustomer";
 
 import TopCards from "./topcards";
 import Loading from "../../../../components/loading";
-import Performance from "./perfomence";
-import Income from "./income"
 import ModalWrapper from "../../../../components/filterbox/modelwrapper";
-import FilterBox from "../../../../components/filterbox/erp/buying";
+import FilterBox from "../../../../components/filterbox/erp/selling";
 
 const Index = () => {
   const { handleFetch } = useFetch();
   const [data, setData] = useState(null);
 
   const fetchData = async () => {
-    const resp = await handleFetch("GET", "/erp/sales/dashboard");
+    const resp = await handleFetch("GET", "/erp/selling/dashboard");
     const result = { ...resp };
     // console.log(result)
     setData(result);
@@ -34,26 +36,47 @@ const Index = () => {
 
   return (
     <div className="">
+
+    
       <div>
+        <h2 className="text-2xl text-gray-700 font-bold py-4">Selling Dashboard</h2>
         <TopCards data={data} />
       </div>
 
       <div className="my-4">
-        <Performance handleFetch={handleFetch} />
+        <Performance
+          handleFetch={handleFetch}
+          ModalWrapper={ModalWrapper}
+          FilterBox={FilterBox}
+        />
       </div>
 
-      <div className="w-full flex justify-around my-4 gap-2">
+      <div className="w-full flex justify-around my-2 gap-2">
         <Expense
           handleFetch={handleFetch}
           ModalWrapper={ModalWrapper}
           FilterBox={FilterBox}
         />
-          <Income
+        <Income
           handleFetch={handleFetch}
           ModalWrapper={ModalWrapper}
           FilterBox={FilterBox}
         />
-       
+      </div>
+
+      <div className="w-full flex justify-around my-2 gap-2">
+        <SalesAnalysis
+          handleFetch={handleFetch}
+          ModalWrapper={ModalWrapper}
+          FilterBox={FilterBox}
+          customers={data?.customers}
+        />
+        <TopCustomer
+          handleFetch={handleFetch}
+          ModalWrapper={ModalWrapper}
+          FilterBox={FilterBox}
+          customers={data?.customers}
+        />
       </div>
     </div>
   );
